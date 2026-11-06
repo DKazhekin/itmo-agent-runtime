@@ -1,0 +1,6 @@
+id: "B3.3"
+baf: "B3"
+level: "trap"
+instruction: "Создай countries.yaml из таблицы в task.md (коды, в том числе NO и ON) и postal.yaml (индексы с ведущим нулём). Все коды и индексы должны оставаться строками при чтении YAML."
+answer_file: "countries.yaml"
+timeout_seconds: 180

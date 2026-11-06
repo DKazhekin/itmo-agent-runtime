@@ -1,0 +1,37 @@
+{
+  "task": "B1.2",
+  "pass": true,
+  "state": {
+    "version": "0",
+    "request_id": "fcf98897274a4388829cd6f718308574",
+    "session_id": "82f80246d6574091b0b2b0eca56526f6",
+    "status": "success",
+    "answer": "Готово — записал `37` в `/work/answer.txt`.\n\nСогласно разделу 11 «Invoices and payment» договора, заказчик обязан оплатить каждый действительный счёт в течение **37 календарных дней** после получения, и этот пункт прямо назван единственным применимым сроком оплаты. Остальные числа в документе (10 — поставка, 14 — приёмка, 60 — гарантия, 90 — хранение записей) к оплате не относятся.",
+    "duration_seconds": 5.0147508419995575,
+    "model_mode": "real"
+  },
+  "checker": {
+    "exit_code": 0,
+    "stdout": "{\"pass\": true, \"reason\": \"ok\"}\n",
+    "stderr": ""
+  },
+  "tool_evidence": {
+    "pass": true,
+    "reason": "tool-execution evidence is not required for this task"
+  },
+  "duration_seconds": 5.543425124138594,
+  "task_id": "B1.2",
+  "repeat": 1,
+  "seconds": 5.543425124138594,
+  "tokens_in": 19665,
+  "tokens_out": 345,
+  "tokens_complete": true,
+  "outcome": "success",
+  "models": [
+    "deepseek/deepseek-v4.1-flash-1017"
+  ],
+  "modes": [
+    "real"
+  ],
+  "reason": "{\"pass\": true, \"reason\": \"ok\"}\n"
+}

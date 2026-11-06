@@ -1,0 +1,6 @@
+id: "B4.2"
+baf: "B4"
+level: "medium"
+instruction: "Переименуй calc_total в compute_total во всём проекте. Обнови определения, импорты и вызовы, сохрани поведение, прогони тесты. Лишние файлы не трогай."
+answer_file: "billing/totals.py"
+timeout_seconds: 300

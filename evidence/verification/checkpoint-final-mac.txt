@@ -1,0 +1,164 @@
+ Container itmo-checkpoint-sandbox-manager-1 Running 
+ Container itmo-checkpoint-llm-proxy-1 Recreate 
+ Container itmo-checkpoint-llm-proxy-1 Recreated 
+ Container itmo-checkpoint-harness-1 Running 
+ Container itmo-checkpoint-gateway-1 Running 
+ Container itmo-checkpoint-llm-proxy-1 Starting 
+ Container itmo-checkpoint-sandbox-image-1 Starting 
+ Container itmo-checkpoint-sandbox-image-1 Started 
+ Container itmo-checkpoint-sandbox-image-1 Waiting 
+ Container itmo-checkpoint-llm-proxy-1 Started 
+ Container itmo-checkpoint-sandbox-image-1 Exited 
+ Container itmo-checkpoint-llm-proxy-1 Waiting 
+ Container itmo-checkpoint-sandbox-manager-1 Waiting 
+ Container itmo-checkpoint-sandbox-manager-1 Healthy 
+ Container itmo-checkpoint-llm-proxy-1 Healthy 
+ Container itmo-checkpoint-harness-1 Waiting 
+ Container itmo-checkpoint-harness-1 Healthy 
+ Container itmo-checkpoint-sandbox-image-1 Waiting 
+ Container itmo-checkpoint-sandbox-manager-1 Waiting 
+ Container itmo-checkpoint-llm-proxy-1 Waiting 
+ Container itmo-checkpoint-harness-1 Waiting 
+ Container itmo-checkpoint-gateway-1 Waiting 
+ Container itmo-checkpoint-llm-proxy-1 Healthy 
+ Container itmo-checkpoint-sandbox-image-1 Exited 
+ Container itmo-checkpoint-gateway-1 Healthy 
+ Container itmo-checkpoint-harness-1 Healthy 
+ Container itmo-checkpoint-sandbox-manager-1 Healthy 
+ Container itmo-checkpoint-tests-run-93f2b3a5073a Creating 
+ Container itmo-checkpoint-tests-run-93f2b3a5073a Created 
+........................................................................ [ 29%]
+........................................................................ [ 59%]
+........................................................................ [ 88%]
+............................                                             [100%]
+=============================== warnings summary ===============================
+tests/test_model_expectations.py::test_server_rejects_mismatch_before_run_is_accepted[actual0-mock-None]
+  /app/runtime/harness.py:41: DeprecationWarning: 
+          on_event is deprecated, use lifespan event handlers instead.
+  
+          Read more about it in the
+          [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+          
+    @app.on_event("startup")
+
+tests/test_model_expectations.py::test_server_rejects_mismatch_before_run_is_accepted[actual0-mock-None]
+  /usr/local/lib/python3.12/site-packages/fastapi/applications.py:4495: DeprecationWarning: 
+          on_event is deprecated, use lifespan event handlers instead.
+  
+          Read more about it in the
+          [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+          
+    return self.router.on_event(event_type)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+244 passed, 2 warnings in 18.58s
+ Container itmo-checkpoint-tests-run-89ba0386830d Creating 
+ Container itmo-checkpoint-tests-run-89ba0386830d Created 
+{
+  "kind": "task_package_validation_not_model_run",
+  "pass": true,
+  "tasks": [
+    {
+      "task_id": "B1.1",
+      "missing_or_unchanged_rejected": true,
+      "correct_accepted": true,
+      "trap_rejected": true
+    },
+    {
+      "task_id": "B1.2",
+      "missing_or_unchanged_rejected": true,
+      "correct_accepted": true,
+      "trap_rejected": true
+    },
+    {
+      "task_id": "B1.3",
+      "missing_or_unchanged_rejected": true,
+      "correct_accepted": true,
+      "trap_rejected": true
+    },
+    {
+      "task_id": "B2.1",
+      "missing_or_unchanged_rejected": true,
+      "correct_accepted": true,
+      "trap_rejected": true
+    },
+    {
+      "task_id": "B2.2",
+      "missing_or_unchanged_rejected": true,
+      "correct_accepted": true,
+      "trap_rejected": true
+    },
+    {
+      "task_id": "B2.3",
+      "missing_or_unchanged_rejected": true,
+      "correct_accepted": true,
+      "trap_rejected": true
+    },
+    {
+      "task_id": "B3.1",
+      "missing_or_unchanged_rejected": true,
+      "correct_accepted": true,
+      "trap_rejected": true
+    },
+    {
+      "task_id": "B3.2",
+      "missing_or_unchanged_rejected": true,
+      "correct_accepted": true,
+      "trap_rejected": true
+    },
+    {
+      "task_id": "B3.3",
+      "missing_or_unchanged_rejected": true,
+      "correct_accepted": true,
+      "trap_rejected": true
+    },
+    {
+      "task_id": "B4.1",
+      "missing_or_unchanged_rejected": true,
+      "correct_accepted": true,
+      "trap_rejected": true
+    },
+    {
+      "task_id": "B4.2",
+      "missing_or_unchanged_rejected": true,
+      "correct_accepted": true,
+      "trap_rejected": true
+    },
+    {
+      "task_id": "B4.3",
+      "missing_or_unchanged_rejected": true,
+      "correct_accepted": true,
+      "trap_rejected": true
+    },
+    {
+      "task_id": "B5.1",
+      "missing_or_unchanged_rejected": true,
+      "correct_accepted": true,
+      "trap_rejected": true
+    },
+    {
+      "task_id": "B5.2",
+      "missing_or_unchanged_rejected": true,
+      "correct_accepted": true,
+      "trap_rejected": true
+    },
+    {
+      "task_id": "B5.3",
+      "missing_or_unchanged_rejected": true,
+      "correct_accepted": true,
+      "trap_rejected": true
+    }
+  ],
+  "scales": {
+    "contract_pages": 15,
+    "contract_words": 6437,
+    "search_files": 200,
+    "environment_readers": 12,
+    "upstream_B1.1_exact": true
+  },
+  "extra_cases": [
+    "missing_second_yaml_rejected",
+    "modified_source_rejected",
+    "artifact_symlink_rejected"
+  ]
+}

@@ -1,0 +1,6 @@
+id,date,description,amount
+R01,2025-12-31,Inventory,300.00
+R02,2026-02-03,Delivery,75.00
+R03,2026-03-17,"Return ""priority""",-15.00
+R04,2026-04-09,"Packaging, reusable",120.50
+R05,2026-04-09,Storage,44.25

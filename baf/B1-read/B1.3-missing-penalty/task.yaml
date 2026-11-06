@@ -1,0 +1,6 @@
+id: "B1.3"
+baf: "B1"
+level: "trap"
+instruction: "Какой размер неустойки по договору contract.md? Запиши ответ в answer.txt. Если сведений нет, используй НЕТ ДАННЫХ."
+answer_file: "answer.txt"
+timeout_seconds: 180

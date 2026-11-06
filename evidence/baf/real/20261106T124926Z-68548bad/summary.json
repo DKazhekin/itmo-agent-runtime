@@ -1,0 +1,564 @@
+{
+  "passed": 12,
+  "total": 15,
+  "requested_total": 15,
+  "not_run": [],
+  "quality_evidence": true,
+  "results": [
+    {
+      "task": "B1.1",
+      "pass": true,
+      "state": {
+        "version": "0",
+        "request_id": "3d51ef9b39654462b4b8e76eb4dd2df0",
+        "session_id": "51dbee39a01649a18cc311d9fe8c310e",
+        "status": "success",
+        "answer": "Сервис `orders` слушает порт **8137** (поле `service.listen.port` в `config/app.yaml`, хост `0.0.0.0`).\n\nЗначение `8080` в конфиге находится в комментарии и помечено как «старый порт, больше не используется», поэтому оно не учитывалось.\n\nВ файл `/work/answer.txt` записано только число: `8137` (без перевода строки, 4 байта).",
+        "duration_seconds": 10.341091557999789,
+        "model_mode": "real"
+      },
+      "checker": {
+        "exit_code": 0,
+        "stdout": "{\"pass\": true, \"reason\": \"ok\"}\n",
+        "stderr": ""
+      },
+      "tool_evidence": {
+        "pass": true,
+        "reason": "tool-execution evidence is not required for this task"
+      },
+      "duration_seconds": 10.816833915188909,
+      "task_id": "B1.1",
+      "repeat": 1,
+      "seconds": 10.816833915188909,
+      "tokens_in": 11799,
+      "tokens_out": 864,
+      "tokens_complete": true,
+      "outcome": "success",
+      "models": [
+        "deepseek/deepseek-v4.1-flash-1017"
+      ],
+      "modes": [
+        "real"
+      ],
+      "reason": "{\"pass\": true, \"reason\": \"ok\"}\n"
+    },
+    {
+      "task": "B1.2",
+      "pass": true,
+      "state": {
+        "version": "0",
+        "request_id": "2d0c57effc8e4f9a95a8bb4f409e3257",
+        "session_id": "b0dd2fd00afd4e7793cfa5ad8c19d076",
+        "status": "success",
+        "answer": "Срок оплаты по договору — **37** календарных дней с момента получения счёта (раздел 11 «Invoices and payment»), что прямо указано как единственный применимый срок оплаты.\n\nЧисло записано в `answer.txt`.",
+        "duration_seconds": 7.66926864800007,
+        "model_mode": "real"
+      },
+      "checker": {
+        "exit_code": 0,
+        "stdout": "{\"pass\": true, \"reason\": \"ok\"}\n",
+        "stderr": ""
+      },
+      "tool_evidence": {
+        "pass": true,
+        "reason": "tool-execution evidence is not required for this task"
+      },
+      "duration_seconds": 8.087848583236337,
+      "task_id": "B1.2",
+      "repeat": 1,
+      "seconds": 8.087848583236337,
+      "tokens_in": 29096,
+      "tokens_out": 293,
+      "tokens_complete": true,
+      "outcome": "success",
+      "models": [
+        "deepseek/deepseek-v4.1-flash-1017"
+      ],
+      "modes": [
+        "real"
+      ],
+      "reason": "{\"pass\": true, \"reason\": \"ok\"}\n"
+    },
+    {
+      "task": "B1.3",
+      "pass": true,
+      "state": {
+        "version": "0",
+        "request_id": "bdb491d946414e329a835f3007e17a92",
+        "session_id": "912bfe94a7d343819b6dba6d6d4a000b",
+        "status": "success",
+        "answer": "В договоре `contract.md` нет условий о неустойке (штрафах, пенях) — ни размера, ни порядка начисления. Документ регулирует только отчётность, оплату, сроки приёмки, конфиденциальность и порядок разрешения споров; также указано, что никакие приложения и графики цен не являются частью соглашения.\n\nОтвет записан в `answer.txt`:\n\n```\nНЕТ ДАННЫХ\n```",
+        "duration_seconds": 5.5580011219999506,
+        "model_mode": "real"
+      },
+      "checker": {
+        "exit_code": 0,
+        "stdout": "{\"pass\": true, \"reason\": \"ok\"}\n",
+        "stderr": ""
+      },
+      "tool_evidence": {
+        "pass": true,
+        "reason": "tool-execution evidence is not required for this task"
+      },
+      "duration_seconds": 6.07594458386302,
+      "task_id": "B1.3",
+      "repeat": 1,
+      "seconds": 6.07594458386302,
+      "tokens_in": 4895,
+      "tokens_out": 348,
+      "tokens_complete": true,
+      "outcome": "success",
+      "models": [
+        "deepseek/deepseek-v4.1-flash-1017"
+      ],
+      "modes": [
+        "real"
+      ],
+      "reason": "{\"pass\": true, \"reason\": \"ok\"}\n"
+    },
+    {
+      "task": "B2.1",
+      "pass": true,
+      "state": {
+        "version": "0",
+        "request_id": "21ceb21286ba4c06bb482c7fe8fd970a",
+        "session_id": "a787f37d0a474d89be44aeb1e0b3f038",
+        "status": "success",
+        "answer": "Функция `parse_date` определена в файле `utilities/dates.py` (строка 3). Путь записан в `answer.txt`.",
+        "duration_seconds": 4.941771619000065,
+        "model_mode": "real"
+      },
+      "checker": {
+        "exit_code": 0,
+        "stdout": "{\"pass\": true, \"reason\": \"ok\"}\n",
+        "stderr": ""
+      },
+      "tool_evidence": {
+        "pass": true,
+        "reason": "tool-execution evidence is not required for this task"
+      },
+      "duration_seconds": 5.365772916004062,
+      "task_id": "B2.1",
+      "repeat": 1,
+      "seconds": 5.365772916004062,
+      "tokens_in": 5347,
+      "tokens_out": 306,
+      "tokens_complete": true,
+      "outcome": "success",
+      "models": [
+        "deepseek/deepseek-v4.1-flash-1017"
+      ],
+      "modes": [
+        "real"
+      ],
+      "reason": "{\"pass\": true, \"reason\": \"ok\"}\n"
+    },
+    {
+      "task": "B2.2",
+      "pass": true,
+      "state": {
+        "version": "0",
+        "request_id": "c5d3b43ed56d4c1dbffbefd4544b10b3",
+        "session_id": "72cdfdaae4d14135965a3fe3801bad14",
+        "status": "success",
+        "answer": "Готово. `answer.txt` содержит 12 относительных путей — файлы, где переменная `DB_URL` действительно читается:\n\n```\nmodules/component_003.py\nmodules/component_017.py\nmodules/component_028.py\nmodules/component_046.py\nmodules/component_061.py\nmodules/component_079.py\nmodules/component_094.py\nmodules/component_112.py\nmodules/component_137.py\nmodules/component_158.py\nmodules/component_176.py\nmodules/component_193.py\n```\n\nКак отбирал (анализ AST по всем 200 `.py` файлам в `modules/`):\n- Подсчёт: подстрока `DB_URL` встречается в 66 файлах, из них чтений — 12.\n- **Включено** (реальное чтение с ключом ровно `\"DB_URL\"`): `os.environ[\"DB_URL\"]` (Load), `os.getenv(\"DB_URL\")`, `os.environ.get(\"DB_URL\", \"\")`, `getenv(\"DB_URL\", \"\")` — по 3 файла на каждый вариант.\n- **Исключено** (54 файла):\n  - 16 файлов с `os.environ[\"DB_URL\"] = \"sqlite:///local.db\"` — присваивание (Store), без чтения;\n  - 16 файлов с `EXAMPLE = 'os.getenv(\"DB_URL\")'` — упоминание внутри строкового литерала;\n  - 22 файла с комментарием `# DB_URL was used by an earlier release.` и чтением другой переменной `TEST_DB_URL` (совпадение только по подстроке, не `DB_URL`).",
+        "duration_seconds": 33.53113730299992,
+        "model_mode": "real"
+      },
+      "checker": {
+        "exit_code": 0,
+        "stdout": "{\"pass\": true, \"reason\": \"ok\"}\n",
+        "stderr": ""
+      },
+      "tool_evidence": {
+        "pass": true,
+        "reason": "tool-execution evidence is not required for this task"
+      },
+      "duration_seconds": 34.101686833426356,
+      "task_id": "B2.2",
+      "repeat": 1,
+      "seconds": 34.101686833426356,
+      "tokens_in": 80276,
+      "tokens_out": 3578,
+      "tokens_complete": true,
+      "outcome": "success",
+      "models": [
+        "deepseek/deepseek-v4.1-flash-1017"
+      ],
+      "modes": [
+        "real"
+      ],
+      "reason": "{\"pass\": true, \"reason\": \"ok\"}\n"
+    },
+    {
+      "task": "B2.3",
+      "pass": true,
+      "state": {
+        "version": "0",
+        "request_id": "9c92f7781e614233ae51dca5d5b5e43e",
+        "session_id": "6b4c0749e7c749ad901bf8852fdf6264",
+        "status": "success",
+        "answer": "**Ответ: `parsers/extended.py`** — записан в `answer.txt`.\n\nОбоснование: в проекте два одноимённых `parse_date`:\n- `parsers/basic.py` — `datetime.strptime(value[:19], ...)` обрезает строку до 19 символов, т.е. **отбрасывает** смещение таймзоны.\n- `parsers/extended.py` — использует `datetime.fromisoformat` с заменой `Z` → `+00:00`, требует явную таймзону и **сохраняет** смещение.\n\nПроверка на примере из README:\n- `extended.parse_date('2026-11-06T10:30:00+03:00')` → `datetime(2026, 11, 6, 10, 30, tzinfo=timezone(timedelta(seconds=10800)))` ✅\n- `extended.parse_date('2026-11-06T10:30:00Z')` → `tzinfo=timezone.utc` ✅\n- `basic.parse_date(...)` → `datetime(2026, 11, 6, 10, 30)` без `tzinfo` ❌",
+        "duration_seconds": 10.764469028000349,
+        "model_mode": "real"
+      },
+      "checker": {
+        "exit_code": 0,
+        "stdout": "{\"pass\": true, \"reason\": \"ok\"}\n",
+        "stderr": ""
+      },
+      "tool_evidence": {
+        "pass": true,
+        "reason": "tool-execution evidence is not required for this task"
+      },
+      "duration_seconds": 11.335128793492913,
+      "task_id": "B2.3",
+      "repeat": 1,
+      "seconds": 11.335128793492913,
+      "tokens_in": 9183,
+      "tokens_out": 872,
+      "tokens_complete": true,
+      "outcome": "success",
+      "models": [
+        "deepseek/deepseek-v4.1-flash-1017"
+      ],
+      "modes": [
+        "real"
+      ],
+      "reason": "{\"pass\": true, \"reason\": \"ok\"}\n"
+    },
+    {
+      "task": "B3.1",
+      "pass": true,
+      "state": {
+        "version": "0",
+        "request_id": "4ea0f77d88534fdb99a821d54abcd83d",
+        "session_id": "a12a521a4a6b469ba1e22373211866e1",
+        "status": "success",
+        "answer": "Готово — создан файл `/work/config.json`:\n\n```json\n{\n  \"service\": \"inventory\",\n  \"environment\": \"staging\",\n  \"listen\": {\n    \"host\": \"127.0.0.1\",\n    \"port\": 8137\n  },\n  \"retries\": 3,\n  \"enabled\": true,\n  \"tags\": [\n    \"internal\",\n    \"read-only\"\n  ]\n}\n```\n\nПроверено скриптом-валидатором (exit code 0, вывод `VALID`):\n- Ровно 6 ключей верхнего уровня, без лишних; во вложенном `listen` — ровно `host` и `port`.\n- `service`/`environment` — строки с нужными значениями.\n- `port` = 8137 и `retries` = 3 — именно целые числа (не строки, не bool).\n- `enabled` — булево `true`, не строка.\n- `tags` — массив ровно из `[\"internal\", \"read-only\"]` в указанном порядке.",
+        "duration_seconds": 7.267769414000213,
+        "model_mode": "real"
+      },
+      "checker": {
+        "exit_code": 0,
+        "stdout": "{\"pass\": true, \"reason\": \"ok\"}\n",
+        "stderr": ""
+      },
+      "tool_evidence": {
+        "pass": true,
+        "reason": "tool-execution evidence is not required for this task"
+      },
+      "duration_seconds": 7.745853625237942,
+      "task_id": "B3.1",
+      "repeat": 1,
+      "seconds": 7.745853625237942,
+      "tokens_in": 4276,
+      "tokens_out": 758,
+      "tokens_complete": true,
+      "outcome": "success",
+      "models": [
+        "deepseek/deepseek-v4.1-flash-1017"
+      ],
+      "modes": [
+        "real"
+      ],
+      "reason": "{\"pass\": true, \"reason\": \"ok\"}\n"
+    },
+    {
+      "task": "B3.2",
+      "pass": true,
+      "state": {
+        "version": "0",
+        "request_id": "5cbda667a7a249c1ab2e20e569afeb73",
+        "session_id": "3c9f742e13fc4abe8e2bbabf67cabb72",
+        "status": "success",
+        "answer": "Готово — `/work/report.csv` создан (UTF-8, LF).\n\n```\nid,date,description,amount\nR01,2025-12-31,Inventory,300.00\nR02,2026-02-03,Delivery,75.00\nR03,2026-03-17,\"Return \"\"priority\"\"\",-15.00\nR04,2026-04-09,\"Packaging, reusable\",120.50\nR05,2026-04-09,Storage,44.25\n```\n\nЧто сделано:\n- Заголовок `id,date,description,amount`.\n- Сортировка по дате возрастанию, при равных датах — по `id` (R04 перед R05).\n- Текст и десятичные форматы сохранены как в исходной таблице (`300.00`, `-15.00` и т.д.).\n- Стандартное CSV-квотирование (minimal): поле с запятой и поле с кавычками заквотированы, внутренние кавычки удвоены.\n\nПроверка: файл прочитан обратно модулем `csv` — 6 строк, значения совпадают с ожидаемыми.",
+        "duration_seconds": 10.247527909000382,
+        "model_mode": "real"
+      },
+      "checker": {
+        "exit_code": 0,
+        "stdout": "{\"pass\": true, \"reason\": \"ok\"}\n",
+        "stderr": ""
+      },
+      "tool_evidence": {
+        "pass": true,
+        "reason": "tool-execution evidence is not required for this task"
+      },
+      "duration_seconds": 10.758835123851895,
+      "task_id": "B3.2",
+      "repeat": 1,
+      "seconds": 10.758835123851895,
+      "tokens_in": 5936,
+      "tokens_out": 1118,
+      "tokens_complete": true,
+      "outcome": "success",
+      "models": [
+        "deepseek/deepseek-v4.1-flash-1017"
+      ],
+      "modes": [
+        "real"
+      ],
+      "reason": "{\"pass\": true, \"reason\": \"ok\"}\n"
+    },
+    {
+      "task": "B3.3",
+      "pass": true,
+      "state": {
+        "version": "0",
+        "request_id": "54b71566416e4ec2adcbe3d81f712e42",
+        "session_id": "099de84a86b14e66b618f84531e5fef8",
+        "status": "success",
+        "answer": "Both files are created and verified.\n\n**`countries.yaml`**\n```yaml\ncountries:\n  - \"NO\"\n  - \"ON\"\n  - \"FR\"\n```\n\n**`postal.yaml`**\n```yaml\npostal_codes:\n  central: \"0123\"\n  west: \"0042\"\n```\n\nWhy every value is double-quoted — this is the crux of the task. Under YAML 1.1 implicit typing:\n- `NO` → boolean `False`, `ON` → boolean `True` (also `off`/`yes`/`y`/`n` etc.)\n- `0123` → octal integer `83`, `0042` → octal integer `34` (leading zero ⇒ base-8, not just a lost zero)\n\nSo unquoted, the data would silently load as `[False, True, 'FR']` and `{'central': 83, 'west': 34}`. Quoting forces the string type in both YAML 1.1 and 1.2 parsers.\n\nVerification performed (`check_output.py` + `verify_yaml.py`, exit code 0, all checks passed):\n- Structure: exactly one top-level key per file (`countries`, `postal_codes`); postal has exactly `central` and `west`.\n- Values and order exact, case preserved: `[\"NO\", \"ON\", \"FR\"]`, `central → \"0123\"`, `west → \"0042\"`.\n- `type(v) is str` for all five values, with leading zeros intact.\n- Resolver self-tests confirm the coercion hazard, plus a **negative test** proving unquoted variants of these same documents *do* become `bool`/`int` — so the quoting is necessary, not incidental.\n\nTwo notes on the environment: no YAML library was installed and there was no network access (`pip install pyyaml` failed on DNS), so rather than leave the files unverified I wrote a small YAML 1.1 resolver covering the subset used here (block mappings/sequences, plain vs. quoted scalars). It is deliberately a subset reader, not a general YAML parser — it validates these files and demonstrates the typing rules, but it is not a substitute for testing against the actual parser in your production stack. I'd recommend a quick `yaml.safe_load` check on your side once PyYAML is available.",
+        "duration_seconds": 45.27712161499949,
+        "model_mode": "real"
+      },
+      "checker": {
+        "exit_code": 0,
+        "stdout": "{\"pass\": true, \"reason\": \"ok\"}\n",
+        "stderr": ""
+      },
+      "tool_evidence": {
+        "pass": true,
+        "reason": "tool-execution evidence is not required for this task"
+      },
+      "duration_seconds": 45.72610920853913,
+      "task_id": "B3.3",
+      "repeat": 1,
+      "seconds": 45.72610920853913,
+      "tokens_in": 45601,
+      "tokens_out": 4341,
+      "tokens_complete": true,
+      "outcome": "success",
+      "models": [
+        "deepseek/deepseek-v4.1-flash-1017"
+      ],
+      "modes": [
+        "real"
+      ],
+      "reason": "{\"pass\": true, \"reason\": \"ok\"}\n"
+    },
+    {
+      "task": "B4.1",
+      "pass": true,
+      "state": {
+        "version": "0",
+        "request_id": "4a9744dde26845338d308061a2f0d2ac",
+        "session_id": "c1b3009f1dde4b5f85b3f7262f5bab26",
+        "status": "success",
+        "answer": "Готово. Обновлена версия только в разделе **Install**.\n\n**Что изменено:**\n- Строка 14 (внутри блока ```` ```sh ```` раздела `## Install`): `pip install report-toolkit==1.2` → `pip install report-toolkit==1.3`\n\n**Что сохранено без изменений (проверено побайтово):**\n- Заголовок `# Report toolkit 1.2`\n- Строка `The deployed release is 1.2. Do not change the historical notes.`\n- Раздел Quick start: `Existing deployments use report-toolkit==1.2.`\n- Раздел History: `Version 1.2 introduced tabular output. Example rollback: report-toolkit==1.2.`\n\n**Верификация:**\n- Размер файла не изменился: 329 байт до и после.\n- Побайтовое сравнение: отличается ровно 1 байт (индекс 232) — цифра `2` → `3`.\n- Кодировка/переводы строк не тронуты: LF, завершающий перевод строки на месте, CRLF отсутствует.\n- `diff` подтверждает единственное изменение — строка 14.",
+        "duration_seconds": 19.57437386499987,
+        "model_mode": "real"
+      },
+      "checker": {
+        "exit_code": 0,
+        "stdout": "{\"pass\": true, \"reason\": \"ok\"}\n",
+        "stderr": ""
+      },
+      "tool_evidence": {
+        "pass": true,
+        "reason": "tool-execution evidence is not required for this task"
+      },
+      "duration_seconds": 20.033528292551637,
+      "task_id": "B4.1",
+      "repeat": 1,
+      "seconds": 20.033528292551637,
+      "tokens_in": 12644,
+      "tokens_out": 1176,
+      "tokens_complete": true,
+      "outcome": "success",
+      "models": [
+        "deepseek/deepseek-v4.1-flash-1017"
+      ],
+      "modes": [
+        "real"
+      ],
+      "reason": "{\"pass\": true, \"reason\": \"ok\"}\n"
+    },
+    {
+      "task": "B4.2",
+      "pass": true,
+      "state": {
+        "version": "0",
+        "request_id": "d6944d708b944ad4b2f4db91fec63038",
+        "session_id": "2cb2f08289894399aaedeeb7fe9b2ab2",
+        "status": "success",
+        "answer": "Готово. Переименовал `calc_total` → `compute_total` во всех местах проекта.\n\n**Изменённые файлы:**\n- `billing/totals.py` — определение функции\n- `billing/__init__.py` — реэкспорт из `.totals`\n- `billing/invoice.py` — импорт и вызов\n- `app.py` — импорт и вызов\n- `test_billing.py` — импорт и вызовы\n\n**Проверка:**\n- Поиск по проекту: вхождений `calc_total` не осталось.\n- `python -m unittest -v` → 2 теста, оба OK (exit 0).\n- Дополнительная проверка поведения: `compute_total([10,5]) == 15`, `invoice_amount([{\"price\": 10}]) == 12.0`, `app.basket_amount([10,5]) == 15` — как и до изменения.\n\nЛогика функции не менялась (только имя), лишние файлы (`README.md`, `assets/rates.csv`) не тронуты.",
+        "duration_seconds": 13.493383250000079,
+        "model_mode": "real"
+      },
+      "checker": {
+        "exit_code": 0,
+        "stdout": "{\"pass\": true, \"reason\": \"ok\"}\n",
+        "stderr": ""
+      },
+      "tool_evidence": {
+        "pass": true,
+        "reason": "tool-execution evidence is not required for this task"
+      },
+      "duration_seconds": 13.975804707035422,
+      "task_id": "B4.2",
+      "repeat": 1,
+      "seconds": 13.975804707035422,
+      "tokens_in": 9608,
+      "tokens_out": 824,
+      "tokens_complete": true,
+      "outcome": "success",
+      "models": [
+        "deepseek/deepseek-v4.1-flash-1017"
+      ],
+      "modes": [
+        "real"
+      ],
+      "reason": "{\"pass\": true, \"reason\": \"ok\"}\n"
+    },
+    {
+      "task": "B4.3",
+      "pass": true,
+      "state": {
+        "version": "0",
+        "request_id": "b6e2bc2c4cef4f52805dac1a80c24a8f",
+        "session_id": "3ab61d37b9b6470ba69fec7f953b1c66",
+        "status": "success",
+        "answer": "Готово. В `prices.csv` цена товара X (Чайник) изменена с 1290 на 990.\n\nЧто проверено побайтово (`od -c`):\n- Кодировка cp1251 сохранена — байты кириллицы (`321 362 356 353` = «Стол», `327 340 351 355 350 352` = «Чайник», `312 360 345 361 353 356` = «Кресло») не изменились.\n- Переводы строк CRLF (`\\r\\n`) сохранены во всех строках, включая завершающий перевод строки в конце файла.\n- Остальное содержимое (заголовок `product_id,name,price`, строки A и B) не тронуто.\n- Файл стал 65 байт вместо 66 — ровно на один символ короче из-за `1290` → `990`.",
+        "duration_seconds": 9.99629139300032,
+        "model_mode": "real"
+      },
+      "checker": {
+        "exit_code": 0,
+        "stdout": "{\"pass\": true, \"reason\": \"ok\"}\n",
+        "stderr": ""
+      },
+      "tool_evidence": {
+        "pass": true,
+        "reason": "tool-execution evidence is not required for this task"
+      },
+      "duration_seconds": 10.450865373015404,
+      "task_id": "B4.3",
+      "repeat": 1,
+      "seconds": 10.450865373015404,
+      "tokens_in": 6289,
+      "tokens_out": 706,
+      "tokens_complete": true,
+      "outcome": "success",
+      "models": [
+        "deepseek/deepseek-v4.1-flash-1017"
+      ],
+      "modes": [
+        "real"
+      ],
+      "reason": "{\"pass\": true, \"reason\": \"ok\"}\n"
+    },
+    {
+      "task": "B5.1",
+      "pass": false,
+      "state": {
+        "version": "0",
+        "request_id": "89dd29345238444ea201f354580c3b69",
+        "session_id": "4ee0ee455bb74b6ea70443817e986a30",
+        "status": "success",
+        "answer": "Готово.\n\n- `python stats.py data.csv` выполнился с кодом 0:\n  - count: 8\n  - mean: 20.75\n  - median: 9.5\n- Медиана записана в `/work/answer.txt`: `9.5`",
+        "duration_seconds": 5.920014231000096,
+        "model_mode": "real"
+      },
+      "checker": {
+        "exit_code": 0,
+        "stdout": "{\"pass\": true, \"reason\": \"ok\"}\n",
+        "stderr": ""
+      },
+      "tool_evidence": {
+        "pass": false,
+        "reason": "tool execution is unverified: expected a direct Python invocation"
+      },
+      "duration_seconds": 6.4320609997957945,
+      "task_id": "B5.1",
+      "repeat": 1,
+      "seconds": 6.4320609997957945,
+      "tokens_in": 5237,
+      "tokens_out": 326,
+      "tokens_complete": true,
+      "outcome": "success",
+      "models": [
+        "deepseek/deepseek-v4.1-flash-1017"
+      ],
+      "modes": [
+        "real"
+      ],
+      "reason": "tool execution is unverified: expected a direct Python invocation"
+    },
+    {
+      "task": "B5.2",
+      "pass": false,
+      "state": {
+        "version": "0",
+        "request_id": "023823ffefd1456f8637d86a67eecfff",
+        "session_id": "882feccc0d534abaad3cfc39261791fd",
+        "status": "success",
+        "answer": "Готово. Прогнал `python -m unittest -v` (все 20 тестов, exit code 1 — `FAILED (failures=3)`) и записал имена упавших тестов в `/work/failed.txt`:\n\n```\ntest_calculations.CalculationTests.test_cent_rounding\ntest_calculations.CalculationTests.test_empty_average\ntest_calculations.CalculationTests.test_negative_discount\n```\n\nДетали по падениям (код не редактировал, как требует README):\n\n| Тест | Причина |\n|---|---|\n| `test_negative_discount` | `discounted(100, -10)` вернул `90`, ожидалось `110` — `abs(discount)` в `calculations.py` убирает знак, хотя тест ожидает увеличение цены при отрицательной скидке |\n| `test_empty_average` | `average([])` не бросает `ValueError` — `max(len(values), 1)` даёт деление на 1 вместо исключения |\n| `test_cent_rounding` | `rounded_cents(1.239)` вернул `123`, ожидалось `124` — `int()` усекает вместо округления |\n\nОстальные 17 тестов (`test_add_00`…`test_add_16`) прошли успешно.\n\nФайл сформирован скриптом, который парсит вывод unittest, — имена взяты напрямую из отчёта, без ручного ввода. Формат — по одному полному имени `модуль.Класс.метод` на строку, порядок совпадает с порядком в выводе тест-раннера.",
+        "duration_seconds": 10.996953690999362,
+        "model_mode": "real"
+      },
+      "checker": {
+        "exit_code": 0,
+        "stdout": "{\"pass\": true, \"reason\": \"ok\"}\n",
+        "stderr": ""
+      },
+      "tool_evidence": {
+        "pass": false,
+        "reason": "tool execution is unverified: shell expansions, multiline commands and escapes are unverified"
+      },
+      "duration_seconds": 11.536626376211643,
+      "task_id": "B5.2",
+      "repeat": 1,
+      "seconds": 11.536626376211643,
+      "tokens_in": 13001,
+      "tokens_out": 1002,
+      "tokens_complete": true,
+      "outcome": "success",
+      "models": [
+        "deepseek/deepseek-v4.1-flash-1017"
+      ],
+      "modes": [
+        "real"
+      ],
+      "reason": "tool execution is unverified: shell expansions, multiline commands and escapes are unverified"
+    },
+    {
+      "task": "B5.3",
+      "pass": false,
+      "state": {
+        "version": "0",
+        "request_id": "ec50264e7a8b42c793481dfe56699d7c",
+        "session_id": "9cb4a2cd1ea744409012aa6a4407b8ef",
+        "status": "success",
+        "answer": "Готово. `answer.txt` записан.\n\n**Ответ: нет, сборка не отрабатывает успешно.**\n\nЧто показал запуск `sh build.sh`:\n- **stdout:** `OK`\n- **stderr:** `ERROR: missing generated schema.json`\n- **код возврата:** `1`\n\nПричина: скрипт печатает `OK` в stdout, но это ложный признак успеха — следом он пишет ошибку в stderr и делает явный `exit 1`. Сборка падает из-за отсутствия необходимого сгенерированного файла `schema.json`. Ориентироваться нужно на код возврата, а не на текст в stdout.",
+        "duration_seconds": 8.059008409999478,
+        "model_mode": "real"
+      },
+      "checker": {
+        "exit_code": 0,
+        "stdout": "{\"pass\": true, \"reason\": \"ok\"}\n",
+        "stderr": ""
+      },
+      "tool_evidence": {
+        "pass": false,
+        "reason": "tool execution is unverified: expected direct sh build.sh with separate stdout and stderr"
+      },
+      "duration_seconds": 8.628924958407879,
+      "task_id": "B5.3",
+      "repeat": 1,
+      "seconds": 8.628924958407879,
+      "tokens_in": 6187,
+      "tokens_out": 595,
+      "tokens_complete": true,
+      "outcome": "success",
+      "models": [
+        "deepseek/deepseek-v4.1-flash-1017"
+      ],
+      "modes": [
+        "real"
+      ],
+      "reason": "tool execution is unverified: expected direct sh build.sh with separate stdout and stderr"
+    }
+  ]
+}

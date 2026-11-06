@@ -1,0 +1,108 @@
+{
+  "kind": "task_package_validation_not_model_run",
+  "pass": true,
+  "tasks": [
+    {
+      "task_id": "B1.1",
+      "missing_or_unchanged_rejected": true,
+      "correct_accepted": true,
+      "trap_rejected": true
+    },
+    {
+      "task_id": "B1.2",
+      "missing_or_unchanged_rejected": true,
+      "correct_accepted": true,
+      "trap_rejected": true
+    },
+    {
+      "task_id": "B1.3",
+      "missing_or_unchanged_rejected": true,
+      "correct_accepted": true,
+      "trap_rejected": true
+    },
+    {
+      "task_id": "B2.1",
+      "missing_or_unchanged_rejected": true,
+      "correct_accepted": true,
+      "trap_rejected": true
+    },
+    {
+      "task_id": "B2.2",
+      "missing_or_unchanged_rejected": true,
+      "correct_accepted": true,
+      "trap_rejected": true
+    },
+    {
+      "task_id": "B2.3",
+      "missing_or_unchanged_rejected": true,
+      "correct_accepted": true,
+      "trap_rejected": true
+    },
+    {
+      "task_id": "B3.1",
+      "missing_or_unchanged_rejected": true,
+      "correct_accepted": true,
+      "trap_rejected": true
+    },
+    {
+      "task_id": "B3.2",
+      "missing_or_unchanged_rejected": true,
+      "correct_accepted": true,
+      "trap_rejected": true
+    },
+    {
+      "task_id": "B3.3",
+      "missing_or_unchanged_rejected": true,
+      "correct_accepted": true,
+      "trap_rejected": true
+    },
+    {
+      "task_id": "B4.1",
+      "missing_or_unchanged_rejected": true,
+      "correct_accepted": true,
+      "trap_rejected": true
+    },
+    {
+      "task_id": "B4.2",
+      "missing_or_unchanged_rejected": true,
+      "correct_accepted": true,
+      "trap_rejected": true
+    },
+    {
+      "task_id": "B4.3",
+      "missing_or_unchanged_rejected": true,
+      "correct_accepted": true,
+      "trap_rejected": true
+    },
+    {
+      "task_id": "B5.1",
+      "missing_or_unchanged_rejected": true,
+      "correct_accepted": true,
+      "trap_rejected": true
+    },
+    {
+      "task_id": "B5.2",
+      "missing_or_unchanged_rejected": true,
+      "correct_accepted": true,
+      "trap_rejected": true
+    },
+    {
+      "task_id": "B5.3",
+      "missing_or_unchanged_rejected": true,
+      "correct_accepted": true,
+      "trap_rejected": true
+    }
+  ],
+  "scales": {
+    "contract_pages": 15,
+    "contract_words": 6437,
+    "search_files": 200,
+    "environment_readers": 12,
+    "upstream_B1.1_exact": true
+  },
+  "extra_cases": [
+    "missing_second_yaml_rejected",
+    "modified_source_rejected",
+    "artifact_symlink_rejected"
+  ]
+}

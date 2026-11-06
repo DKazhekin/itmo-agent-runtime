@@ -1,0 +1,8 @@
+{
+  "pass": true,
+  "uid": 1000,
+  "reserved_before_micro": 350000,
+  "reserved_after_restart_micro": 350000,
+  "deleted_journal_rejected": true,
+  "model_requests": 0
+}

@@ -1,0 +1,14 @@
+{
+  "service": "inventory",
+  "environment": "staging",
+  "listen": {
+    "host": "127.0.0.1",
+    "port": 8137
+  },
+  "retries": 3,
+  "enabled": true,
+  "tags": [
+    "internal",
+    "read-only"
+  ]
+}

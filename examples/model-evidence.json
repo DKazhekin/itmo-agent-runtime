@@ -1,0 +1,14 @@
+{
+  "model": "deepseek/deepseek-v4.1-flash-1017",
+  "version": "deepseek/deepseek-v4.1-flash-20261017",
+  "reasoning_effort": "high",
+  "index": 29,
+  "index_date": "2026-11-06",
+  "index_source": "https://artificialanalysis.ai/models/deepseek-v4-1-flash-1017-high",
+  "access": "OpenRouter with DeepInfra FP8 routing; configure MODEL_API_KEY locally",
+  "approval": "",
+  "budget_limit": 0,
+  "currency": "USD",
+  "provider": "deepinfra/fp8",
+  "quantization": "fp8"
+}

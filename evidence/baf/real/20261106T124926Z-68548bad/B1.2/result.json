@@ -1,0 +1,37 @@
+{
+  "task": "B1.2",
+  "pass": true,
+  "state": {
+    "version": "0",
+    "request_id": "2d0c57effc8e4f9a95a8bb4f409e3257",
+    "session_id": "b0dd2fd00afd4e7793cfa5ad8c19d076",
+    "status": "success",
+    "answer": "Срок оплаты по договору — **37** календарных дней с момента получения счёта (раздел 11 «Invoices and payment»), что прямо указано как единственный применимый срок оплаты.\n\nЧисло записано в `answer.txt`.",
+    "duration_seconds": 7.66926864800007,
+    "model_mode": "real"
+  },
+  "checker": {
+    "exit_code": 0,
+    "stdout": "{\"pass\": true, \"reason\": \"ok\"}\n",
+    "stderr": ""
+  },
+  "tool_evidence": {
+    "pass": true,
+    "reason": "tool-execution evidence is not required for this task"
+  },
+  "duration_seconds": 8.087848583236337,
+  "task_id": "B1.2",
+  "repeat": 1,
+  "seconds": 8.087848583236337,
+  "tokens_in": 29096,
+  "tokens_out": 293,
+  "tokens_complete": true,
+  "outcome": "success",
+  "models": [
+    "deepseek/deepseek-v4.1-flash-1017"
+  ],
+  "modes": [
+    "real"
+  ],
+  "reason": "{\"pass\": true, \"reason\": \"ok\"}\n"
+}

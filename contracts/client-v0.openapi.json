@@ -1,0 +1,2453 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Client server protocol",
+    "version": "0"
+  },
+  "paths": {
+    "/health": {
+      "get": {
+        "summary": "Health",
+        "operationId": "health_health_get",
+        "responses": {
+          "200": {
+            "description": "Protocol response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientHealthResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Malformed request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unknown resource",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Identifier conflict or busy session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Payload too large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Upstream transport failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Configuration unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Service failure; not an accepted operation result",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sessions": {
+      "post": {
+        "summary": "Provision",
+        "operationId": "provision_sessions_post",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Session"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Protocol response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Malformed request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unknown resource",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Identifier conflict or busy session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Payload too large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Upstream transport failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Configuration unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Service failure; not an accepted operation result",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid Bearer token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ClientToken": []
+          }
+        ]
+      }
+    },
+    "/runs": {
+      "post": {
+        "summary": "Run",
+        "operationId": "run_runs_post",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Run"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Protocol response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RunResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Malformed request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unknown resource",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Identifier conflict or busy session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Payload too large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Upstream transport failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Configuration unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Service failure; not an accepted operation result",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid Bearer token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ClientToken": []
+          }
+        ]
+      }
+    },
+    "/runs/{run_id}": {
+      "get": {
+        "summary": "Status",
+        "operationId": "status_runs__run_id__get",
+        "parameters": [
+          {
+            "name": "run_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Run Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Protocol response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RunResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Malformed request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unknown resource",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Identifier conflict or busy session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Payload too large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Upstream transport failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Configuration unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Service failure; not an accepted operation result",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid Bearer token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ClientToken": []
+          }
+        ]
+      }
+    },
+    "/runs/{run_id}/events": {
+      "get": {
+        "summary": "Events",
+        "operationId": "events_runs__run_id__events_get",
+        "parameters": [
+          {
+            "name": "run_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Run Id"
+            }
+          },
+          {
+            "name": "after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 0,
+              "title": "After"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Protocol response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientEventBatch"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Malformed request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unknown resource",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Identifier conflict or busy session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Payload too large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Upstream transport failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Configuration unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Service failure; not an accepted operation result",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid Bearer token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ClientToken": []
+          }
+        ]
+      }
+    },
+    "/runs/{run_id}/cancel": {
+      "post": {
+        "summary": "Cancel",
+        "operationId": "cancel_runs__run_id__cancel_post",
+        "parameters": [
+          {
+            "name": "run_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Run Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Protocol response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RunResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Malformed request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unknown resource",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Identifier conflict or busy session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Payload too large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Upstream transport failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Configuration unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Service failure; not an accepted operation result",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid Bearer token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ClientToken": []
+          }
+        ]
+      }
+    },
+    "/sessions/{session_id}/files": {
+      "get": {
+        "summary": "Collect",
+        "operationId": "collect_sessions__session_id__files_get",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Protocol response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CollectResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Malformed request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unknown resource",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Identifier conflict or busy session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Payload too large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Upstream transport failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Configuration unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Service failure; not an accepted operation result",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid Bearer token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ClientToken": []
+          }
+        ]
+      }
+    },
+    "/sessions/{session_id}": {
+      "delete": {
+        "summary": "Release",
+        "operationId": "release_sessions__session_id__delete",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Protocol response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReleaseResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Malformed request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unknown resource",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Identifier conflict or busy session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Payload too large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Upstream transport failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Configuration unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Service failure; not an accepted operation result",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid Bearer token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ClientToken": []
+          }
+        ]
+      }
+    },
+    "/runs/{run_id}/stream": {
+      "get": {
+        "summary": "Events",
+        "operationId": "events_runs__run_id__stream_get",
+        "parameters": [
+          {
+            "name": "run_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Run Id"
+            }
+          },
+          {
+            "name": "after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 0,
+              "title": "After"
+            }
+          },
+          {
+            "name": "Last-Event-ID",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "pattern": "^-?[0-9]+$"
+            },
+            "description": "Last delivered sequence number; takes precedence over the after query parameter."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Server-sent event frames with id, event, and JSON data fields",
+            "content": {
+              "text/event-stream": {
+                "schema": {
+                  "type": "string"
+                },
+                "x-event-schema": {
+                  "$ref": "#/components/schemas/ClientEvent"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Malformed request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unknown resource",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Identifier conflict or busy session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Payload too large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Request validation failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Upstream transport failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Configuration unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Service failure; not an accepted operation result",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid Bearer token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ClientToken": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "Run": {
+        "additionalProperties": false,
+        "properties": {
+          "version": {
+            "const": "0",
+            "default": "0",
+            "title": "Version",
+            "type": "string"
+          },
+          "request_id": {
+            "pattern": "^[a-zA-Z0-9_-]{1,64}$",
+            "title": "Request Id",
+            "type": "string"
+          },
+          "session_id": {
+            "pattern": "^[a-zA-Z0-9_-]{1,64}$",
+            "title": "Session Id",
+            "type": "string"
+          },
+          "instruction": {
+            "maxLength": 50000,
+            "minLength": 1,
+            "title": "Instruction",
+            "type": "string"
+          },
+          "expected_mode": {
+            "default": "mock",
+            "enum": [
+              "mock",
+              "real"
+            ],
+            "title": "Expected Mode",
+            "type": "string"
+          },
+          "expected_model": {
+            "anyOf": [
+              {
+                "maxLength": 200,
+                "minLength": 1,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Expected Model"
+          },
+          "max_steps": {
+            "default": 30,
+            "maximum": 60,
+            "minimum": 1,
+            "title": "Max Steps",
+            "type": "integer"
+          },
+          "timeout_seconds": {
+            "default": 240,
+            "maximum": 600,
+            "minimum": 1,
+            "title": "Timeout Seconds",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "request_id",
+          "session_id",
+          "instruction"
+        ],
+        "title": "Run",
+        "type": "object"
+      },
+      "Session": {
+        "additionalProperties": false,
+        "properties": {
+          "version": {
+            "const": "0",
+            "default": "0",
+            "title": "Version",
+            "type": "string"
+          },
+          "session_id": {
+            "pattern": "^[a-zA-Z0-9_-]{1,64}$",
+            "title": "Session Id",
+            "type": "string"
+          },
+          "files": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "Files",
+            "type": "object"
+          }
+        },
+        "required": [
+          "session_id"
+        ],
+        "title": "Session",
+        "type": "object"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      },
+      "Operation": {
+        "additionalProperties": false,
+        "properties": {
+          "version": {
+            "const": "0",
+            "default": "0",
+            "title": "Version",
+            "type": "string"
+          },
+          "operation_id": {
+            "pattern": "^[a-zA-Z0-9_-]{1,100}$",
+            "title": "Operation Id",
+            "type": "string"
+          },
+          "session_id": {
+            "pattern": "^[a-zA-Z0-9_-]{1,64}$",
+            "title": "Session Id",
+            "type": "string"
+          },
+          "tool": {
+            "pattern": "^(RunCommand|ReadFile|WriteFile)$",
+            "title": "Tool",
+            "type": "string"
+          },
+          "arguments": {
+            "additionalProperties": true,
+            "title": "Arguments",
+            "type": "object"
+          },
+          "timeout_seconds": {
+            "default": 20,
+            "maximum": 60,
+            "minimum": 1,
+            "title": "Timeout Seconds",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "operation_id",
+          "session_id",
+          "tool",
+          "arguments"
+        ],
+        "title": "Operation",
+        "type": "object"
+      },
+      "RunCommandArguments": {
+        "type": "object",
+        "properties": {
+          "command": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "command"
+        ],
+        "additionalProperties": false
+      },
+      "ReadFileArguments": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "path"
+        ],
+        "additionalProperties": false
+      },
+      "WriteFileArguments": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "path",
+          "content"
+        ],
+        "additionalProperties": false
+      },
+      "HealthResponse": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "const": "0"
+          },
+          "status": {
+            "const": "ready"
+          }
+        },
+        "required": [
+          "version",
+          "status"
+        ],
+        "additionalProperties": false
+      },
+      "ClientHealthResponse": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "const": "0"
+          },
+          "status": {
+            "const": "ready"
+          },
+          "model_mode": {
+            "enum": [
+              "mock",
+              "real"
+            ]
+          },
+          "model": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "version",
+          "status",
+          "model_mode",
+          "model"
+        ],
+        "additionalProperties": false
+      },
+      "CollectResponse": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "const": "0"
+          },
+          "files": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string",
+              "contentEncoding": "base64"
+            }
+          }
+        },
+        "required": [
+          "version",
+          "files"
+        ],
+        "additionalProperties": false
+      },
+      "ReleaseResponse": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "const": "0"
+          },
+          "status": {
+            "const": "released"
+          }
+        },
+        "required": [
+          "version",
+          "status"
+        ],
+        "additionalProperties": false
+      },
+      "CancelResponse": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "const": "0"
+          },
+          "status": {
+            "const": "cancelled"
+          }
+        },
+        "required": [
+          "version",
+          "status"
+        ],
+        "additionalProperties": false
+      },
+      "ValidationIssue": {
+        "type": "object",
+        "properties": {
+          "loc": {
+            "type": "array",
+            "items": {
+              "type": [
+                "string",
+                "integer"
+              ]
+            }
+          },
+          "msg": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "input": {},
+          "ctx": {
+            "type": "object"
+          },
+          "url": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "additionalProperties": false
+      },
+      "HTTPErrorResponse": {
+        "type": "object",
+        "properties": {
+          "detail": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/ValidationIssue"
+                }
+              }
+            ]
+          }
+        },
+        "required": [
+          "detail"
+        ],
+        "additionalProperties": false
+      },
+      "OperationRequest": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Operation"
+          },
+          {
+            "if": {
+              "properties": {
+                "tool": {
+                  "const": "RunCommand"
+                }
+              },
+              "required": [
+                "tool"
+              ]
+            },
+            "then": {
+              "properties": {
+                "arguments": {
+                  "$ref": "#/components/schemas/RunCommandArguments"
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "tool": {
+                  "const": "ReadFile"
+                }
+              },
+              "required": [
+                "tool"
+              ]
+            },
+            "then": {
+              "properties": {
+                "arguments": {
+                  "$ref": "#/components/schemas/ReadFileArguments"
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "tool": {
+                  "const": "WriteFile"
+                }
+              },
+              "required": [
+                "tool"
+              ]
+            },
+            "then": {
+              "properties": {
+                "arguments": {
+                  "$ref": "#/components/schemas/WriteFileArguments"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "SessionReady": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "const": "0"
+          },
+          "session_id": {
+            "pattern": "^[a-zA-Z0-9_-]{1,64}$",
+            "title": "Session Id",
+            "type": "string"
+          },
+          "status": {
+            "const": "ready"
+          }
+        },
+        "required": [
+          "version",
+          "session_id",
+          "status"
+        ],
+        "additionalProperties": false
+      },
+      "SessionInProgress": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "const": "0"
+          },
+          "session_id": {
+            "pattern": "^[a-zA-Z0-9_-]{1,64}$",
+            "title": "Session Id",
+            "type": "string"
+          },
+          "status": {
+            "const": "running"
+          }
+        },
+        "required": [
+          "version",
+          "session_id",
+          "status"
+        ],
+        "additionalProperties": false
+      },
+      "SessionReleased": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "const": "0"
+          },
+          "session_id": {
+            "pattern": "^[a-zA-Z0-9_-]{1,64}$",
+            "title": "Session Id",
+            "type": "string"
+          },
+          "status": {
+            "const": "released"
+          }
+        },
+        "required": [
+          "version",
+          "session_id",
+          "status"
+        ],
+        "additionalProperties": false
+      },
+      "SessionFailure": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "const": "0"
+          },
+          "session_id": {
+            "pattern": "^[a-zA-Z0-9_-]{1,64}$",
+            "title": "Session Id",
+            "type": "string"
+          },
+          "status": {
+            "const": "error"
+          },
+          "error": {
+            "const": "sandbox_error"
+          },
+          "detail": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "version",
+          "session_id",
+          "status",
+          "error"
+        ],
+        "additionalProperties": false
+      },
+      "SessionResponse": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/SessionReady"
+          },
+          {
+            "$ref": "#/components/schemas/SessionInProgress"
+          },
+          {
+            "$ref": "#/components/schemas/SessionReleased"
+          },
+          {
+            "$ref": "#/components/schemas/SessionFailure"
+          }
+        ]
+      },
+      "OperationInProgress": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "const": "0"
+          },
+          "operation_id": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9_-]{1,100}$"
+          },
+          "status": {
+            "const": "running"
+          }
+        },
+        "required": [
+          "version",
+          "operation_id",
+          "status"
+        ],
+        "additionalProperties": false
+      },
+      "OperationSuccess": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "const": "0"
+          },
+          "operation_id": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9_-]{1,100}$"
+          },
+          "status": {
+            "const": "success"
+          },
+          "exit_code": {
+            "const": 0
+          },
+          "stdout": {
+            "type": "string"
+          },
+          "stderr": {
+            "type": "string"
+          },
+          "truncated": {
+            "type": "boolean"
+          },
+          "duration_seconds": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "version",
+          "operation_id",
+          "status",
+          "exit_code",
+          "stdout",
+          "stderr",
+          "truncated",
+          "duration_seconds"
+        ],
+        "additionalProperties": false
+      },
+      "OperationFailure": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "const": "0"
+          },
+          "operation_id": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9_-]{1,100}$"
+          },
+          "status": {
+            "const": "error"
+          },
+          "error": {
+            "enum": [
+              "command_error",
+              "timeout",
+              "sandbox_error"
+            ]
+          },
+          "exit_code": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "stdout": {
+            "type": "string"
+          },
+          "stderr": {
+            "type": "string"
+          },
+          "truncated": {
+            "type": "boolean"
+          },
+          "duration_seconds": {
+            "type": "number",
+            "minimum": 0
+          },
+          "detail": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "version",
+          "operation_id",
+          "status",
+          "error"
+        ],
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "error": {
+                  "const": "command_error"
+                }
+              },
+              "required": [
+                "error"
+              ]
+            },
+            "then": {
+              "required": [
+                "exit_code",
+                "stdout",
+                "stderr",
+                "truncated",
+                "duration_seconds"
+              ],
+              "properties": {
+                "exit_code": {
+                  "type": "integer",
+                  "not": {
+                    "const": 0
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "OperationResult": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/OperationSuccess"
+          },
+          {
+            "$ref": "#/components/schemas/OperationFailure"
+          }
+        ]
+      },
+      "OperationResponse": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/OperationInProgress"
+          },
+          {
+            "$ref": "#/components/schemas/OperationSuccess"
+          },
+          {
+            "$ref": "#/components/schemas/OperationFailure"
+          }
+        ]
+      },
+      "RunInProgress": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "const": "0"
+          },
+          "request_id": {
+            "pattern": "^[a-zA-Z0-9_-]{1,64}$",
+            "title": "Request Id",
+            "type": "string"
+          },
+          "session_id": {
+            "pattern": "^[a-zA-Z0-9_-]{1,64}$",
+            "title": "Session Id",
+            "type": "string"
+          },
+          "status": {
+            "const": "running"
+          }
+        },
+        "required": [
+          "version",
+          "request_id",
+          "session_id",
+          "status"
+        ],
+        "additionalProperties": false
+      },
+      "RunSuccess": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "const": "0"
+          },
+          "request_id": {
+            "pattern": "^[a-zA-Z0-9_-]{1,64}$",
+            "title": "Request Id",
+            "type": "string"
+          },
+          "session_id": {
+            "pattern": "^[a-zA-Z0-9_-]{1,64}$",
+            "title": "Session Id",
+            "type": "string"
+          },
+          "status": {
+            "const": "success"
+          },
+          "answer": {
+            "type": "string"
+          },
+          "duration_seconds": {
+            "type": "number",
+            "minimum": 0
+          },
+          "model_mode": {
+            "enum": [
+              "mock",
+              "real"
+            ]
+          }
+        },
+        "required": [
+          "version",
+          "request_id",
+          "session_id",
+          "status",
+          "answer",
+          "duration_seconds",
+          "model_mode"
+        ],
+        "additionalProperties": false
+      },
+      "RunFailure": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "const": "0"
+          },
+          "request_id": {
+            "pattern": "^[a-zA-Z0-9_-]{1,64}$",
+            "title": "Request Id",
+            "type": "string"
+          },
+          "session_id": {
+            "pattern": "^[a-zA-Z0-9_-]{1,64}$",
+            "title": "Session Id",
+            "type": "string"
+          },
+          "status": {
+            "const": "error"
+          },
+          "error": {
+            "enum": [
+              "harness_restarted",
+              "timeout",
+              "sandbox_error",
+              "step_limit",
+              "transport_error",
+              "model_error"
+            ]
+          },
+          "detail": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "version",
+          "request_id",
+          "session_id",
+          "status",
+          "error"
+        ],
+        "additionalProperties": false
+      },
+      "RunCancelled": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "const": "0"
+          },
+          "request_id": {
+            "pattern": "^[a-zA-Z0-9_-]{1,64}$",
+            "title": "Request Id",
+            "type": "string"
+          },
+          "session_id": {
+            "pattern": "^[a-zA-Z0-9_-]{1,64}$",
+            "title": "Session Id",
+            "type": "string"
+          },
+          "status": {
+            "const": "cancelled"
+          }
+        },
+        "required": [
+          "version",
+          "request_id",
+          "session_id",
+          "status"
+        ],
+        "additionalProperties": false
+      },
+      "RunResult": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/RunSuccess"
+          },
+          {
+            "$ref": "#/components/schemas/RunFailure"
+          },
+          {
+            "$ref": "#/components/schemas/RunCancelled"
+          }
+        ]
+      },
+      "RunResponse": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/RunInProgress"
+          },
+          {
+            "$ref": "#/components/schemas/RunSuccess"
+          },
+          {
+            "$ref": "#/components/schemas/RunFailure"
+          },
+          {
+            "$ref": "#/components/schemas/RunCancelled"
+          }
+        ]
+      },
+      "InvalidToolResult": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "const": "error"
+          },
+          "error": {
+            "const": "invalid_tool"
+          },
+          "detail": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "error",
+          "detail"
+        ],
+        "additionalProperties": false
+      },
+      "StartedEvent": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "const": "0"
+          },
+          "seq": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "trace_id": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9_-]{1,100}$"
+          },
+          "time": {
+            "type": "number",
+            "minimum": 0
+          },
+          "type": {
+            "const": "started"
+          },
+          "session_id": {
+            "pattern": "^[a-zA-Z0-9_-]{1,64}$",
+            "title": "Session Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "version",
+          "seq",
+          "trace_id",
+          "time",
+          "type",
+          "session_id"
+        ],
+        "additionalProperties": false
+      },
+      "ModelEvent": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "const": "0"
+          },
+          "seq": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "trace_id": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9_-]{1,100}$"
+          },
+          "time": {
+            "type": "number",
+            "minimum": 0
+          },
+          "type": {
+            "const": "model"
+          },
+          "step": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "usage": {
+            "type": "object",
+            "description": "Provider-native token usage; an empty object means unavailable."
+          },
+          "model": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "mode": {
+            "enum": [
+              "mock",
+              "real"
+            ]
+          }
+        },
+        "required": [
+          "version",
+          "seq",
+          "trace_id",
+          "time",
+          "type",
+          "step",
+          "usage",
+          "model",
+          "mode"
+        ],
+        "additionalProperties": false
+      },
+      "ToolCallEvent": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "const": "0"
+          },
+          "seq": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "trace_id": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9_-]{1,100}$"
+          },
+          "time": {
+            "type": "number",
+            "minimum": 0
+          },
+          "type": {
+            "const": "tool_call"
+          },
+          "operation_id": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9_-]{1,100}$"
+          },
+          "tool": {
+            "type": "string",
+            "description": "Raw model-selected name, recorded before validation."
+          },
+          "arguments": {
+            "description": "Raw JSON arguments, recorded before tool schema validation."
+          }
+        },
+        "required": [
+          "version",
+          "seq",
+          "trace_id",
+          "time",
+          "type",
+          "operation_id",
+          "tool",
+          "arguments"
+        ],
+        "additionalProperties": false
+      },
+      "ToolResultEvent": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "const": "0"
+          },
+          "seq": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "trace_id": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9_-]{1,100}$"
+          },
+          "time": {
+            "type": "number",
+            "minimum": 0
+          },
+          "type": {
+            "const": "tool_result"
+          },
+          "operation_id": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9_-]{1,100}$"
+          },
+          "result": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/OperationResponse"
+              },
+              {
+                "$ref": "#/components/schemas/InvalidToolResult"
+              }
+            ]
+          }
+        },
+        "required": [
+          "version",
+          "seq",
+          "trace_id",
+          "time",
+          "type",
+          "operation_id",
+          "result"
+        ],
+        "additionalProperties": false
+      },
+      "ClientResultEvent": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "const": "0"
+          },
+          "seq": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "trace_id": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9_-]{1,100}$"
+          },
+          "time": {
+            "type": "number",
+            "minimum": 0
+          },
+          "type": {
+            "const": "result"
+          },
+          "result": {
+            "$ref": "#/components/schemas/RunResult"
+          }
+        },
+        "required": [
+          "version",
+          "seq",
+          "trace_id",
+          "time",
+          "type",
+          "result"
+        ],
+        "additionalProperties": false
+      },
+      "SandboxResultEvent": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "const": "0"
+          },
+          "seq": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "trace_id": {
+            "type": "string",
+            "pattern": "^[a-zA-Z0-9_-]{1,100}$"
+          },
+          "time": {
+            "type": "number",
+            "minimum": 0
+          },
+          "type": {
+            "const": "result"
+          },
+          "result": {
+            "$ref": "#/components/schemas/OperationResult"
+          }
+        },
+        "required": [
+          "version",
+          "seq",
+          "trace_id",
+          "time",
+          "type",
+          "result"
+        ],
+        "additionalProperties": false
+      },
+      "ClientEvent": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/StartedEvent"
+          },
+          {
+            "$ref": "#/components/schemas/ModelEvent"
+          },
+          {
+            "$ref": "#/components/schemas/ToolCallEvent"
+          },
+          {
+            "$ref": "#/components/schemas/ToolResultEvent"
+          },
+          {
+            "$ref": "#/components/schemas/ClientResultEvent"
+          }
+        ]
+      },
+      "SandboxEvent": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/StartedEvent"
+          },
+          {
+            "$ref": "#/components/schemas/SandboxResultEvent"
+          }
+        ]
+      },
+      "ClientEventBatch": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "const": "0"
+          },
+          "events": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ClientEvent"
+            }
+          }
+        },
+        "required": [
+          "version",
+          "events"
+        ],
+        "additionalProperties": false
+      },
+      "SandboxEventBatch": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "const": "0"
+          },
+          "events": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SandboxEvent"
+            }
+          }
+        },
+        "required": [
+          "version",
+          "events"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "securitySchemes": {
+      "ClientToken": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  },
+  "x-live-source": {
+    "service": "harness plus gateway stream and health",
+    "sha256": "20e85ea51a95facd66138fc2b62b56f9c26feaa7bb3740d72a846deb12caa2f7",
+    "response_schemas": "Enriched from the executable v0 contract; live routes and request models are preserved."
+  }
+}

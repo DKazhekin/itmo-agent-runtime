@@ -1,0 +1,6 @@
+id: "B3.1"
+baf: "B3"
+level: "simple"
+instruction: "Создай config.json по спецификации spec.md."
+answer_file: "config.json"
+timeout_seconds: 180

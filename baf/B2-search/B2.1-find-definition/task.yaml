@@ -1,0 +1,6 @@
+id: "B2.1"
+baf: "B2"
+level: "simple"
+instruction: "В каком файле определена функция parse_date? Запиши относительный путь в answer.txt."
+answer_file: "answer.txt"
+timeout_seconds: 180

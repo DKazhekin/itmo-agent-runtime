@@ -1,0 +1,37 @@
+{
+  "task": "B2.2",
+  "pass": true,
+  "state": {
+    "version": "0",
+    "request_id": "43e8f5481ccd48a8bd46414626cf48bf",
+    "session_id": "21c3274627b5408489a87f675ae93bdd",
+    "status": "success",
+    "answer": "Готово. В `/work` всего 200 файлов (все в `modules/`), из них `DB_URL` встречается в 66 файлах, но только в 12 происходит фактическое чтение переменной окружения.\n\nЗаписано в `answer.txt` (12 путей):\n\n```\nmodules/component_003.py\nmodules/component_017.py\nmodules/component_028.py\nmodules/component_046.py\nmodules/component_061.py\nmodules/component_079.py\nmodules/component_094.py\nmodules/component_112.py\nmodules/component_137.py\nmodules/component_158.py\nmodules/component_176.py\nmodules/component_193.py\n```\n\nЧто исключено:\n- 22 файла с `os.environ[\"DB_URL\"] = \"sqlite:///local.db\"` — запись, не чтение.\n- 16 файлов с комментарием `# DB_URL was used by an earlier release.` и чтением другой переменной `TEST_DB_URL`.\n- 16 файлов с `EXAMPLE = 'os.getenv(\"DB_URL\")'` — упоминание внутри строкового литерала.\n\nВключённые варианты чтения: `os.environ[\"DB_URL\"]`, `os.getenv(\"DB_URL\")`, `os.environ.get(\"DB_URL\", \"\")`, `getenv(\"DB_URL\", \"\")`.",
+    "duration_seconds": 21.61084557400045,
+    "model_mode": "real"
+  },
+  "checker": {
+    "exit_code": 0,
+    "stdout": "{\"pass\": true, \"reason\": \"ok\"}\n",
+    "stderr": ""
+  },
+  "tool_evidence": {
+    "pass": true,
+    "reason": "tool-execution evidence is not required for this task"
+  },
+  "duration_seconds": 22.24953008443117,
+  "task_id": "B2.2",
+  "repeat": 1,
+  "seconds": 22.24953008443117,
+  "tokens_in": 64737,
+  "tokens_out": 1886,
+  "tokens_complete": true,
+  "outcome": "success",
+  "models": [
+    "deepseek/deepseek-v4.1-flash-1017"
+  ],
+  "modes": [
+    "real"
+  ],
+  "reason": "{\"pass\": true, \"reason\": \"ok\"}\n"
+}

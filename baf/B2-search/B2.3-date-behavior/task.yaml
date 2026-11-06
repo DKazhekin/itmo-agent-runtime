@@ -1,0 +1,6 @@
+id: "B2.3"
+baf: "B2"
+level: "trap"
+instruction: "Где функция parse_date, которая парсит даты ISO 8601 с таймзоной и сохраняет смещение? Запиши относительный путь в answer.txt."
+answer_file: "answer.txt"
+timeout_seconds: 180

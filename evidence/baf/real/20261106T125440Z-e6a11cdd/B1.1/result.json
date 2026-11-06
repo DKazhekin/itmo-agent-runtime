@@ -1,0 +1,37 @@
+{
+  "task": "B1.1",
+  "pass": true,
+  "state": {
+    "version": "0",
+    "request_id": "405a6cd09ddd41efade65bf99d2d95a2",
+    "session_id": "03a01e9a22084ddc851c72d3a4e1e2d8",
+    "status": "success",
+    "answer": "Сервис `orders` слушает порт **8137** (из `config/app.yaml` → `service.listen.port`; значение 8080 указано лишь в комментарии как устаревшее и не используется).\n\nОтвет записан в `/work/answer.txt`:\n\n```\n8137\n```",
+    "duration_seconds": 7.628550801000529,
+    "model_mode": "real"
+  },
+  "checker": {
+    "exit_code": 0,
+    "stdout": "{\"pass\": true, \"reason\": \"ok\"}\n",
+    "stderr": ""
+  },
+  "tool_evidence": {
+    "pass": true,
+    "reason": "tool-execution evidence is not required for this task"
+  },
+  "duration_seconds": 8.159148208796978,
+  "task_id": "B1.1",
+  "repeat": 1,
+  "seconds": 8.159148208796978,
+  "tokens_in": 5080,
+  "tokens_out": 395,
+  "tokens_complete": true,
+  "outcome": "success",
+  "models": [
+    "deepseek/deepseek-v4.1-flash-1017"
+  ],
+  "modes": [
+    "real"
+  ],
+  "reason": "{\"pass\": true, \"reason\": \"ok\"}\n"
+}

@@ -1,0 +1,6 @@
+id: "B5.2"
+baf: "B5"
+level: "medium"
+instruction: "Прогони тесты проекта и запиши имена упавших тестов в failed.txt, по одному полному имени вида test_calculations.CalculationTests.test_name на строку."
+answer_file: "failed.txt"
+timeout_seconds: 240

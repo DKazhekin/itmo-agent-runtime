@@ -1,0 +1,37 @@
+{
+  "task": "B3.2",
+  "pass": true,
+  "state": {
+    "version": "0",
+    "request_id": "d0204c9606fc451ca3819bf3b6ea8b75",
+    "session_id": "8e971842757c40e0a76b3922e7291d22",
+    "status": "success",
+    "answer": "Готово — `report.csv` создан.\n\n**Что сделано:**\n- Распарсил markdown-таблицу из `task.md` скриптом (`build_report.py`), чтобы текст полей не переписывался вручную.\n- Отсортировал по `date` по возрастанию, при равных датах — по `id` по возрастанию.\n- Записал в UTF-8 с заголовком `id,date,description,amount` и стандартным CSV-квотированием (`csv.QUOTE_MINIMAL`).\n\n**Результат:**\n```\nid,date,description,amount\nR01,2025-12-31,Inventory,300.00\nR02,2026-02-03,Delivery,75.00\nR03,2026-03-17,\"Return \"\"priority\"\"\",-15.00\nR04,2026-04-09,\"Packaging, reusable\",120.50\nR05,2026-04-09,Storage,44.25\n```\n\n**Проверки (все прошли):**\n- Скрипт завершился с кодом 0, записано 5 строк.\n- Обратное чтение через `csv.reader` даёт ровно 4 колонки в каждой строке — квотирование корректно.\n- Поле `Return \"priority\"` восстановилось в исходном виде (кавычки удвоены внутри поля, как требует стандарт CSV).\n- Поле `Packaging, reusable` заквотировано из-за запятой, при чтении запятая сохранена.\n- Порядок строк подтверждён как отсортированный; форматирование чисел (`300.00`, `75.00`, `-15.00`) сохранено как текст.\n\nСтроки R04 и R05 имеют одинаковую дату `2026-04-09` и упорядочены по `id` (R04 перед R05), как и требовалось.",
+    "duration_seconds": 12.996352165000644,
+    "model_mode": "real"
+  },
+  "checker": {
+    "exit_code": 0,
+    "stdout": "{\"pass\": true, \"reason\": \"ok\"}\n",
+    "stderr": ""
+  },
+  "tool_evidence": {
+    "pass": true,
+    "reason": "tool-execution evidence is not required for this task"
+  },
+  "duration_seconds": 13.424158375710249,
+  "task_id": "B3.2",
+  "repeat": 1,
+  "seconds": 13.424158375710249,
+  "tokens_in": 9202,
+  "tokens_out": 1372,
+  "tokens_complete": true,
+  "outcome": "success",
+  "models": [
+    "deepseek/deepseek-v4.1-flash-1017"
+  ],
+  "modes": [
+    "real"
+  ],
+  "reason": "{\"pass\": true, \"reason\": \"ok\"}\n"
+}

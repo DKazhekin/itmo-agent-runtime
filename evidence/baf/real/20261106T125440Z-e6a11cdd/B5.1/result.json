@@ -1,0 +1,37 @@
+{
+  "task": "B5.1",
+  "pass": true,
+  "state": {
+    "version": "0",
+    "request_id": "11dd994598f14e4e9ddaab9c0c15b9dd",
+    "session_id": "5b6c47bb1c5840c7a4321335dd8c5c8e",
+    "status": "success",
+    "answer": "Готово.\n\n**Что сделано:**\n1. Запустил `python stats.py data.csv` — код выхода 0, вывод:\n   ```\n   count: 8\n   mean: 20.75\n   median: 9.5\n   ```\n2. Записал медиану в `answer.txt` — файл содержит `9.5` (проверил чтением).\n\n**Проверка:** в `data.csv` 8 значений — 3, 21, 8, 11, 9, 10, 100, 4. Отсортированный ряд: 3, 4, 8, **9, 10**, 11, 21, 100. Медиана = (9 + 10) / 2 = **9.5**, что совпадает с выводом скрипта.\n\nЗамечание: `stats.py` дополнительно печатает count и mean, но в файл записано только значение медианы, как и требовалось.",
+    "duration_seconds": 7.969218526000077,
+    "model_mode": "real"
+  },
+  "checker": {
+    "exit_code": 0,
+    "stdout": "{\"pass\": true, \"reason\": \"ok\"}\n",
+    "stderr": ""
+  },
+  "tool_evidence": {
+    "pass": true,
+    "reason": "verified B5.1 RunCommand and matching manager result"
+  },
+  "duration_seconds": 8.469165248796344,
+  "task_id": "B5.1",
+  "repeat": 1,
+  "seconds": 8.469165248796344,
+  "tokens_in": 7495,
+  "tokens_out": 608,
+  "tokens_complete": true,
+  "outcome": "success",
+  "models": [
+    "deepseek/deepseek-v4.1-flash-1017"
+  ],
+  "modes": [
+    "real"
+  ],
+  "reason": "{\"pass\": true, \"reason\": \"ok\"}\n"
+}

@@ -1,0 +1,13 @@
+{
+  "pass": true,
+  "real_attempt": "evidence/baf/real/20261106T125440Z-e6a11cdd",
+  "tasks_passed": 15,
+  "schema_validated_events": 322,
+  "source_snapshot_matches": true,
+  "changed_since_first_full_run": [
+    "runtime/harness.py"
+  ],
+  "fixtures_and_checkers_unchanged": true,
+  "all_b5_execution_evidence_verified": true,
+  "scope": "Recorded run and source snapshot at the time of evaluation; not a claim about later repository revisions."
+}

@@ -1,0 +1,13 @@
+{
+  "kind": "host_readonly_container_inspection_and_targeted_service_restart",
+  "session": "restart-f3b7bc117e1f4f84",
+  "container_before": true,
+  "container_after": false,
+  "repeated_provision_status": {
+    "version": "0",
+    "session_id": "restart-f3b7bc117e1f4f84",
+    "status": "released"
+  },
+  "restart_exit": 0,
+  "pass": true
+}

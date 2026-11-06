@@ -1,0 +1,37 @@
+{
+  "task": "B4.1",
+  "pass": true,
+  "state": {
+    "version": "0",
+    "request_id": "4a9744dde26845338d308061a2f0d2ac",
+    "session_id": "c1b3009f1dde4b5f85b3f7262f5bab26",
+    "status": "success",
+    "answer": "Готово. Обновлена версия только в разделе **Install**.\n\n**Что изменено:**\n- Строка 14 (внутри блока ```` ```sh ```` раздела `## Install`): `pip install report-toolkit==1.2` → `pip install report-toolkit==1.3`\n\n**Что сохранено без изменений (проверено побайтово):**\n- Заголовок `# Report toolkit 1.2`\n- Строка `The deployed release is 1.2. Do not change the historical notes.`\n- Раздел Quick start: `Existing deployments use report-toolkit==1.2.`\n- Раздел History: `Version 1.2 introduced tabular output. Example rollback: report-toolkit==1.2.`\n\n**Верификация:**\n- Размер файла не изменился: 329 байт до и после.\n- Побайтовое сравнение: отличается ровно 1 байт (индекс 232) — цифра `2` → `3`.\n- Кодировка/переводы строк не тронуты: LF, завершающий перевод строки на месте, CRLF отсутствует.\n- `diff` подтверждает единственное изменение — строка 14.",
+    "duration_seconds": 19.57437386499987,
+    "model_mode": "real"
+  },
+  "checker": {
+    "exit_code": 0,
+    "stdout": "{\"pass\": true, \"reason\": \"ok\"}\n",
+    "stderr": ""
+  },
+  "tool_evidence": {
+    "pass": true,
+    "reason": "tool-execution evidence is not required for this task"
+  },
+  "duration_seconds": 20.033528292551637,
+  "task_id": "B4.1",
+  "repeat": 1,
+  "seconds": 20.033528292551637,
+  "tokens_in": 12644,
+  "tokens_out": 1176,
+  "tokens_complete": true,
+  "outcome": "success",
+  "models": [
+    "deepseek/deepseek-v4.1-flash-1017"
+  ],
+  "modes": [
+    "real"
+  ],
+  "reason": "{\"pass\": true, \"reason\": \"ok\"}\n"
+}

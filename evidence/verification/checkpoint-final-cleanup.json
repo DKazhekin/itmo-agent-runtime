@@ -1,0 +1,19 @@
+{
+  "pass": true,
+  "session": "cleanup-047be13c24a84700",
+  "checks": {
+    "container_remaining": 0,
+    "volume_remaining": 0,
+    "network_remaining": 0,
+    "sandbox_remaining": 0
+  },
+  "observations": [
+    {
+      "container_remaining": 0,
+      "volume_remaining": 0,
+      "network_remaining": 0,
+      "sandbox_remaining": 0
+    }
+  ],
+  "includes_stopped_containers": true
+}

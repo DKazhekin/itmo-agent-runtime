@@ -1,0 +1,6 @@
+id: "B3.2"
+baf: "B3"
+level: "medium"
+instruction: "Сделай report.csv из таблицы в task.md, отсортируй по дате."
+answer_file: "report.csv"
+timeout_seconds: 180

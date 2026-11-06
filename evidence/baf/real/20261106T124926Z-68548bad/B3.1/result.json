@@ -1,0 +1,37 @@
+{
+  "task": "B3.1",
+  "pass": true,
+  "state": {
+    "version": "0",
+    "request_id": "4ea0f77d88534fdb99a821d54abcd83d",
+    "session_id": "a12a521a4a6b469ba1e22373211866e1",
+    "status": "success",
+    "answer": "Готово — создан файл `/work/config.json`:\n\n```json\n{\n  \"service\": \"inventory\",\n  \"environment\": \"staging\",\n  \"listen\": {\n    \"host\": \"127.0.0.1\",\n    \"port\": 8137\n  },\n  \"retries\": 3,\n  \"enabled\": true,\n  \"tags\": [\n    \"internal\",\n    \"read-only\"\n  ]\n}\n```\n\nПроверено скриптом-валидатором (exit code 0, вывод `VALID`):\n- Ровно 6 ключей верхнего уровня, без лишних; во вложенном `listen` — ровно `host` и `port`.\n- `service`/`environment` — строки с нужными значениями.\n- `port` = 8137 и `retries` = 3 — именно целые числа (не строки, не bool).\n- `enabled` — булево `true`, не строка.\n- `tags` — массив ровно из `[\"internal\", \"read-only\"]` в указанном порядке.",
+    "duration_seconds": 7.267769414000213,
+    "model_mode": "real"
+  },
+  "checker": {
+    "exit_code": 0,
+    "stdout": "{\"pass\": true, \"reason\": \"ok\"}\n",
+    "stderr": ""
+  },
+  "tool_evidence": {
+    "pass": true,
+    "reason": "tool-execution evidence is not required for this task"
+  },
+  "duration_seconds": 7.745853625237942,
+  "task_id": "B3.1",
+  "repeat": 1,
+  "seconds": 7.745853625237942,
+  "tokens_in": 4276,
+  "tokens_out": 758,
+  "tokens_complete": true,
+  "outcome": "success",
+  "models": [
+    "deepseek/deepseek-v4.1-flash-1017"
+  ],
+  "modes": [
+    "real"
+  ],
+  "reason": "{\"pass\": true, \"reason\": \"ok\"}\n"
+}

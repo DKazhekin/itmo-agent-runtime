@@ -1,0 +1,37 @@
+{
+  "task": "B2.1",
+  "pass": true,
+  "state": {
+    "version": "0",
+    "request_id": "21ceb21286ba4c06bb482c7fe8fd970a",
+    "session_id": "a787f37d0a474d89be44aeb1e0b3f038",
+    "status": "success",
+    "answer": "Функция `parse_date` определена в файле `utilities/dates.py` (строка 3). Путь записан в `answer.txt`.",
+    "duration_seconds": 4.941771619000065,
+    "model_mode": "real"
+  },
+  "checker": {
+    "exit_code": 0,
+    "stdout": "{\"pass\": true, \"reason\": \"ok\"}\n",
+    "stderr": ""
+  },
+  "tool_evidence": {
+    "pass": true,
+    "reason": "tool-execution evidence is not required for this task"
+  },
+  "duration_seconds": 5.365772916004062,
+  "task_id": "B2.1",
+  "repeat": 1,
+  "seconds": 5.365772916004062,
+  "tokens_in": 5347,
+  "tokens_out": 306,
+  "tokens_complete": true,
+  "outcome": "success",
+  "models": [
+    "deepseek/deepseek-v4.1-flash-1017"
+  ],
+  "modes": [
+    "real"
+  ],
+  "reason": "{\"pass\": true, \"reason\": \"ok\"}\n"
+}

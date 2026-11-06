@@ -1,0 +1,37 @@
+{
+  "task": "B4.2",
+  "pass": true,
+  "state": {
+    "version": "0",
+    "request_id": "d6944d708b944ad4b2f4db91fec63038",
+    "session_id": "2cb2f08289894399aaedeeb7fe9b2ab2",
+    "status": "success",
+    "answer": "Готово. Переименовал `calc_total` → `compute_total` во всех местах проекта.\n\n**Изменённые файлы:**\n- `billing/totals.py` — определение функции\n- `billing/__init__.py` — реэкспорт из `.totals`\n- `billing/invoice.py` — импорт и вызов\n- `app.py` — импорт и вызов\n- `test_billing.py` — импорт и вызовы\n\n**Проверка:**\n- Поиск по проекту: вхождений `calc_total` не осталось.\n- `python -m unittest -v` → 2 теста, оба OK (exit 0).\n- Дополнительная проверка поведения: `compute_total([10,5]) == 15`, `invoice_amount([{\"price\": 10}]) == 12.0`, `app.basket_amount([10,5]) == 15` — как и до изменения.\n\nЛогика функции не менялась (только имя), лишние файлы (`README.md`, `assets/rates.csv`) не тронуты.",
+    "duration_seconds": 13.493383250000079,
+    "model_mode": "real"
+  },
+  "checker": {
+    "exit_code": 0,
+    "stdout": "{\"pass\": true, \"reason\": \"ok\"}\n",
+    "stderr": ""
+  },
+  "tool_evidence": {
+    "pass": true,
+    "reason": "tool-execution evidence is not required for this task"
+  },
+  "duration_seconds": 13.975804707035422,
+  "task_id": "B4.2",
+  "repeat": 1,
+  "seconds": 13.975804707035422,
+  "tokens_in": 9608,
+  "tokens_out": 824,
+  "tokens_complete": true,
+  "outcome": "success",
+  "models": [
+    "deepseek/deepseek-v4.1-flash-1017"
+  ],
+  "modes": [
+    "real"
+  ],
+  "reason": "{\"pass\": true, \"reason\": \"ok\"}\n"
+}

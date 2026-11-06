@@ -1,0 +1,105 @@
+name: itmo-checkpoint
+x-service: &service
+  init: true
+  restart: "no"
+  read_only: true
+  cap_drop: [ALL]
+  security_opt: [no-new-privileges:true]
+  tmpfs: [/tmp]
+  healthcheck:
+    test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=5)"]
+    interval: 3s
+    timeout: 10s
+    retries: 30
+services:
+  sandbox-image:
+    build:
+      context: .
+      dockerfile: Dockerfile.sandbox
+    image: itmo-sandbox:0.1
+    command: ["true"]
+    network_mode: none
+    read_only: true
+    cap_drop: [ALL]
+  sandbox-manager:
+    <<: *service
+    build: .
+    command: [python, -m, uvicorn, "runtime.sandbox:app", --host, 0.0.0.0, --port, "8000"]
+    environment:
+      STATE_DIR: /state
+      SANDBOX_NAMESPACE: ${COMPOSE_PROJECT_NAME:-itmo-checkpoint}
+      HARNESS_CANARY_SECRET: canary-must-not-enter-sandbox
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - sandbox-state:/state
+    networks: [control]
+    depends_on:
+      sandbox-image:
+        condition: service_completed_successfully
+    stop_grace_period: 30s
+  llm-proxy:
+    <<: *service
+    build: .
+    command: [python, -m, uvicorn, "runtime.proxy:app", --host, 0.0.0.0, --port, "8000"]
+    user: "1000:1000"
+    environment:
+      MODEL_MODE: ${MODEL_MODE:-mock}
+      MODEL_BASE_URL: ${MODEL_BASE_URL:-}
+      MODEL_NAME: ${MODEL_NAME:-}
+      MODEL_API_KEY: ${MODEL_API_KEY:-}
+      MODEL_BUDGET_ID: ${MODEL_BUDGET_ID:-}
+      MODEL_BUDGET_USD: ${MODEL_BUDGET_USD:-}
+      MODEL_BUDGET_PATH: /model-state/budget.sqlite3
+    volumes:
+      - model-state:/model-state
+    networks: [control, model]
+  harness:
+    <<: *service
+    build: .
+    command: [python, -m, uvicorn, "runtime.harness:app", --host, 0.0.0.0, --port, "8000"]
+    environment:
+      STATE_DIR: /state
+      HARNESS: ${HARNESS:-sequential}
+    volumes:
+      - harness-state:/state
+    networks: [control]
+    depends_on:
+      sandbox-manager:
+        condition: service_healthy
+      llm-proxy:
+        condition: service_healthy
+  gateway:
+    <<: *service
+    build: .
+    user: "1000:1000"
+    environment:
+      CLIENT_TOKEN: ${CLIENT_TOKEN:-local-checkpoint-token}
+    ports: ["127.0.0.1:${GATEWAY_PORT:-8080}:8000"]
+    networks: [control, ingress]
+    depends_on:
+      harness:
+        condition: service_healthy
+  tests:
+    <<: *service
+    profiles: [test]
+    image: ${COMPOSE_PROJECT_NAME:-itmo-checkpoint}-gateway
+    command: [python, -m, pytest, tests, -q, -p, no:cacheprovider]
+    environment:
+      RUNTIME_URL: http://gateway:8000
+      SANDBOX_URL: http://sandbox-manager:8000
+      TEST_CANARY_SECRET: canary-must-not-enter-sandbox
+    networks: [control]
+    healthcheck:
+      disable: true
+    depends_on:
+      gateway:
+        condition: service_healthy
+networks:
+  control:
+    internal: true
+  model: {}
+  ingress: {}
+volumes:
+  sandbox-state: {}
+  harness-state: {}
+  model-state: {}

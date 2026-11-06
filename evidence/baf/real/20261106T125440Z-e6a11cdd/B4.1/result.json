@@ -1,0 +1,37 @@
+{
+  "task": "B4.1",
+  "pass": true,
+  "state": {
+    "version": "0",
+    "request_id": "fc3876b29d0a4068943be9daa18f4f71",
+    "session_id": "7ca1e66c1e3e4f909924b016cc6727b9",
+    "status": "success",
+    "answer": "Готово. В `README.md` в разделе `## Install` версия в команде установки изменена с `report-toolkit==1.2` на `report-toolkit==1.3`.\n\nВсе остальные вхождения `1.2` (заголовок, описание деплоя, раздел Quick start и History) остались без изменений; длина файла и байты вне раздела Install сохранены байт-в-байт (проверено сравнением содержимого).",
+    "duration_seconds": 11.448016279000512,
+    "model_mode": "real"
+  },
+  "checker": {
+    "exit_code": 0,
+    "stdout": "{\"pass\": true, \"reason\": \"ok\"}\n",
+    "stderr": ""
+  },
+  "tool_evidence": {
+    "pass": true,
+    "reason": "tool-execution evidence is not required for this task"
+  },
+  "duration_seconds": 11.945351669564843,
+  "task_id": "B4.1",
+  "repeat": 1,
+  "seconds": 11.945351669564843,
+  "tokens_in": 10006,
+  "tokens_out": 720,
+  "tokens_complete": true,
+  "outcome": "success",
+  "models": [
+    "deepseek/deepseek-v4.1-flash-1017"
+  ],
+  "modes": [
+    "real"
+  ],
+  "reason": "{\"pass\": true, \"reason\": \"ok\"}\n"
+}

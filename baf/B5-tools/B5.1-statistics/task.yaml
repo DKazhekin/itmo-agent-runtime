@@ -1,0 +1,6 @@
+id: "B5.1"
+baf: "B5"
+level: "simple"
+instruction: "Запусти python stats.py data.csv и запиши медиану в answer.txt."
+answer_file: "answer.txt"
+timeout_seconds: 180

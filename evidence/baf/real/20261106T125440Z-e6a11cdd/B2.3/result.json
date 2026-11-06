@@ -1,0 +1,37 @@
+{
+  "task": "B2.3",
+  "pass": true,
+  "state": {
+    "version": "0",
+    "request_id": "793bb47af8ab457fb13a235a0a495a0a",
+    "session_id": "10537b180e284cdd80b68a14441cbcc9",
+    "status": "success",
+    "answer": "Функция `parse_date`, которая парсит ISO 8601 с таймзоной и сохраняет смещение (а также принимает суффикс `Z`), находится в файле:\n\n```\nparsers/extended.py\n```\n\nПуть записан в `answer.txt`. Для сравнения: `parsers/basic.py` содержит одноимённую функцию, но она обрезает строку до 19 символов и теряет таймзону.",
+    "duration_seconds": 6.463215153999954,
+    "model_mode": "real"
+  },
+  "checker": {
+    "exit_code": 0,
+    "stdout": "{\"pass\": true, \"reason\": \"ok\"}\n",
+    "stderr": ""
+  },
+  "tool_evidence": {
+    "pass": true,
+    "reason": "tool-execution evidence is not required for this task"
+  },
+  "duration_seconds": 7.002729708328843,
+  "task_id": "B2.3",
+  "repeat": 1,
+  "seconds": 7.002729708328843,
+  "tokens_in": 6779,
+  "tokens_out": 493,
+  "tokens_complete": true,
+  "outcome": "success",
+  "models": [
+    "deepseek/deepseek-v4.1-flash-1017"
+  ],
+  "modes": [
+    "real"
+  ],
+  "reason": "{\"pass\": true, \"reason\": \"ok\"}\n"
+}

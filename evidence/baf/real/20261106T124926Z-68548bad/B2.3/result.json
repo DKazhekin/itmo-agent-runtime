@@ -1,0 +1,37 @@
+{
+  "task": "B2.3",
+  "pass": true,
+  "state": {
+    "version": "0",
+    "request_id": "9c92f7781e614233ae51dca5d5b5e43e",
+    "session_id": "6b4c0749e7c749ad901bf8852fdf6264",
+    "status": "success",
+    "answer": "**Ответ: `parsers/extended.py`** — записан в `answer.txt`.\n\nОбоснование: в проекте два одноимённых `parse_date`:\n- `parsers/basic.py` — `datetime.strptime(value[:19], ...)` обрезает строку до 19 символов, т.е. **отбрасывает** смещение таймзоны.\n- `parsers/extended.py` — использует `datetime.fromisoformat` с заменой `Z` → `+00:00`, требует явную таймзону и **сохраняет** смещение.\n\nПроверка на примере из README:\n- `extended.parse_date('2026-11-06T10:30:00+03:00')` → `datetime(2026, 11, 6, 10, 30, tzinfo=timezone(timedelta(seconds=10800)))` ✅\n- `extended.parse_date('2026-11-06T10:30:00Z')` → `tzinfo=timezone.utc` ✅\n- `basic.parse_date(...)` → `datetime(2026, 11, 6, 10, 30)` без `tzinfo` ❌",
+    "duration_seconds": 10.764469028000349,
+    "model_mode": "real"
+  },
+  "checker": {
+    "exit_code": 0,
+    "stdout": "{\"pass\": true, \"reason\": \"ok\"}\n",
+    "stderr": ""
+  },
+  "tool_evidence": {
+    "pass": true,
+    "reason": "tool-execution evidence is not required for this task"
+  },
+  "duration_seconds": 11.335128793492913,
+  "task_id": "B2.3",
+  "repeat": 1,
+  "seconds": 11.335128793492913,
+  "tokens_in": 9183,
+  "tokens_out": 872,
+  "tokens_complete": true,
+  "outcome": "success",
+  "models": [
+    "deepseek/deepseek-v4.1-flash-1017"
+  ],
+  "modes": [
+    "real"
+  ],
+  "reason": "{\"pass\": true, \"reason\": \"ok\"}\n"
+}

@@ -1,0 +1,37 @@
+{
+  "task": "B5.1",
+  "pass": false,
+  "state": {
+    "version": "0",
+    "request_id": "89dd29345238444ea201f354580c3b69",
+    "session_id": "4ee0ee455bb74b6ea70443817e986a30",
+    "status": "success",
+    "answer": "Готово.\n\n- `python stats.py data.csv` выполнился с кодом 0:\n  - count: 8\n  - mean: 20.75\n  - median: 9.5\n- Медиана записана в `/work/answer.txt`: `9.5`",
+    "duration_seconds": 5.920014231000096,
+    "model_mode": "real"
+  },
+  "checker": {
+    "exit_code": 0,
+    "stdout": "{\"pass\": true, \"reason\": \"ok\"}\n",
+    "stderr": ""
+  },
+  "tool_evidence": {
+    "pass": false,
+    "reason": "tool execution is unverified: expected a direct Python invocation"
+  },
+  "duration_seconds": 6.4320609997957945,
+  "task_id": "B5.1",
+  "repeat": 1,
+  "seconds": 6.4320609997957945,
+  "tokens_in": 5237,
+  "tokens_out": 326,
+  "tokens_complete": true,
+  "outcome": "success",
+  "models": [
+    "deepseek/deepseek-v4.1-flash-1017"
+  ],
+  "modes": [
+    "real"
+  ],
+  "reason": "tool execution is unverified: expected a direct Python invocation"
+}

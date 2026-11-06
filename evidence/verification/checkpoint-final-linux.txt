@@ -1,0 +1,353 @@
+ Image itmo-clean-gateway Building 
+ Image itmo-sandbox:0.1 Building 
+ Image itmo-clean-sandbox-manager Building 
+ Image itmo-clean-llm-proxy Building 
+ Image itmo-clean-harness Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 2.29kB done
+#1 DONE 0.0s
+
+#2 [gateway internal] load build definition from Dockerfile
+#2 transferring dockerfile: 545B done
+#2 DONE 0.0s
+
+#3 [sandbox-image internal] load build definition from Dockerfile.sandbox
+#3 transferring dockerfile: 229B done
+#3 DONE 0.0s
+
+#4 [gateway internal] load metadata for docker.io/library/python:3.12.12-slim-bookworm
+#4 DONE 0.0s
+
+#5 [sandbox-manager internal] load .dockerignore
+#5 transferring context: 109B done
+#5 DONE 0.0s
+
+#6 [sandbox-image  1/11] FROM docker.io/library/python:3.12.12-slim-bookworm@sha256:593bd06efe90efa80dc4eee3948be7c0fde4134606dd40d8dd8dbcade98e669c
+#6 resolve docker.io/library/python:3.12.12-slim-bookworm@sha256:593bd06efe90efa80dc4eee3948be7c0fde4134606dd40d8dd8dbcade98e669c 0.0s done
+#6 DONE 0.0s
+
+#7 [sandbox-image 2/3] RUN groupadd -g 1000 agent && useradd -u 1000 -g 1000 -M agent
+#7 CACHED
+
+#8 [sandbox-image 3/3] WORKDIR /work
+#8 CACHED
+
+#9 [sandbox-manager internal] load build context
+#9 transferring context: 506.98kB 0.0s done
+#9 DONE 0.0s
+
+#10 [sandbox-manager  2/11] WORKDIR /app
+#10 CACHED
+
+#11 [sandbox-manager  4/11] COPY requirements.lock /app/requirements.lock
+#11 CACHED
+
+#12 [sandbox-manager  3/11] RUN mkdir /model-state && chown 1000:1000 /model-state
+#12 CACHED
+
+#13 [harness  5/11] RUN pip install --no-cache-dir --require-hashes -r requirements.lock
+#13 CACHED
+
+#14 [sandbox-image] exporting to image
+#14 exporting layers done
+#14 exporting manifest sha256:357b6106696ff57cd88d90ee4d0f76adbd8896ad241015b36dbb3870c93f3eb6 done
+#14 exporting config sha256:7b2f0922f52bad395bea927696bee136d308ea3a7abefc515fe2b75689d859d0 done
+#14 exporting attestation manifest sha256:bd3eca062d8c420321424e7cb9a69c9ca5ed2db8e20f3b8aaa289af0549d47e5
+#14 exporting attestation manifest sha256:bd3eca062d8c420321424e7cb9a69c9ca5ed2db8e20f3b8aaa289af0549d47e5 0.0s done
+#14 exporting manifest list sha256:13eafe8bc420e9a53d21f9237a87d12f42d2c8c5ea215930746b6b1a41e12fc2 done
+#14 naming to docker.io/library/itmo-sandbox:0.1 done
+#14 unpacking to docker.io/library/itmo-sandbox:0.1 done
+#14 DONE 0.0s
+
+#15 [harness  6/11] COPY runtime /app/runtime
+#15 DONE 0.0s
+
+#16 [gateway  7/11] COPY client /app/client
+#16 DONE 0.0s
+
+#17 [harness  8/11] COPY contracts /app/contracts
+#17 DONE 0.0s
+
+#18 [gateway  9/11] COPY tests /app/tests
+#18 DONE 0.0s
+
+#19 [sandbox-image] resolving provenance for metadata file
+#19 DONE 0.0s
+
+#20 [gateway 10/11] COPY baf /app/baf
+#20 DONE 0.0s
+
+#21 [llm-proxy 11/11] COPY scripts /app/scripts
+#21 DONE 0.0s
+
+#22 [sandbox-manager] exporting to image
+#22 exporting layers 0.1s done
+#22 exporting manifest sha256:652e09072afc6ac68fd8716408bb3efaf62bd6f10048e8dc167d501a91435f2c done
+#22 exporting config sha256:901ae35487a7974d959ee5555c18b62992d8dcc8bae8e787a3abc67b7d1df34e done
+#22 exporting attestation manifest sha256:c8367970f6cee17bea9c417e60efde5e72659d556b81e9bea559cb8b5271183c 0.0s done
+#22 exporting manifest list sha256:e25cae72464de9abdbd4011bb6a9d4bdf106e8a34c3b349acc94d0c015ea5443 done
+#22 naming to docker.io/library/itmo-clean-sandbox-manager:latest done
+#22 unpacking to docker.io/library/itmo-clean-sandbox-manager:latest
+#22 unpacking to docker.io/library/itmo-clean-sandbox-manager:latest 0.1s done
+#22 DONE 0.2s
+
+#23 [llm-proxy] exporting to image
+#23 exporting layers 0.1s done
+#23 exporting manifest sha256:a1917410af139241c63fbc3bf93cac69dc1a4e210785b64b2b317c36616910d1 done
+#23 exporting config sha256:187b4e3f42849780c379780857fde761ca25adaee01e2d529780a869195dc8c5 done
+#23 exporting attestation manifest sha256:71bc75313a146254e05b50cb7406fa1ef7e3c92f369a7314834aa7895d89d2e3 0.0s done
+#23 exporting manifest list sha256:5f072747fe9b30297c2068d408373f0b79b3db91da7857285e1fa73e3eaccc46 done
+#23 naming to docker.io/library/itmo-clean-llm-proxy:latest done
+#23 unpacking to docker.io/library/itmo-clean-llm-proxy:latest 0.1s done
+#23 DONE 0.2s
+
+#24 [gateway] exporting to image
+#24 exporting layers 0.1s done
+#24 exporting manifest sha256:1c1dc952e682ce3e67b599bc155d6e8f96a7e9484b3b59c89c3fa9f0b18bf3fd done
+#24 exporting config sha256:905e0ee06655bc848b6dfa8c81dd5577a35cde7d0685c4c184932921ba602319 done
+#24 exporting attestation manifest sha256:8e6802f28c1d45b1d6d973e059c1dc6daab60d7734bb6375b8b5ae3e8c003e6d 0.0s done
+#24 exporting manifest list sha256:fbaecbee4c0cca379f10f28288d11b9403af10ec4e03ffa54c7a6a653888a5c8 done
+#24 naming to docker.io/library/itmo-clean-gateway:latest done
+#24 unpacking to docker.io/library/itmo-clean-gateway:latest 0.1s done
+#24 DONE 0.2s
+
+#25 [harness] exporting to image
+#25 exporting layers 0.1s done
+#25 exporting manifest sha256:bee77e7f2573807d9d3e611907aefa630907de62c2a84bac2c7096753678b647 done
+#25 exporting config sha256:c6cc60dbdb008549453a8a479c7a6c786797289206fd0ab6ac71e7808aa1ef28 done
+#25 exporting attestation manifest sha256:4f74492eba68d3f260a24fd469e36738fe7328d98acd08a88ea5db732bd9d61b 0.0s done
+#25 exporting manifest list sha256:43a88d9ad9c9b7a1f4dcc09136ea0b2f7f280c95fdff456eebe91f34185a6eff done
+#25 naming to docker.io/library/itmo-clean-harness:latest done
+#25 unpacking to docker.io/library/itmo-clean-harness:latest 0.1s done
+#25 DONE 0.2s
+
+#26 [sandbox-manager] resolving provenance for metadata file
+#26 DONE 0.0s
+
+#27 [gateway] resolving provenance for metadata file
+#27 DONE 0.0s
+
+#28 [llm-proxy] resolving provenance for metadata file
+#28 DONE 0.0s
+
+#29 [harness] resolving provenance for metadata file
+#29 DONE 0.0s
+ Image itmo-clean-harness Built 
+ Image itmo-clean-gateway Built 
+ Image itmo-clean-llm-proxy Built 
+ Image itmo-sandbox:0.1 Built 
+ Image itmo-clean-sandbox-manager Built 
+ Network itmo-clean_control Creating 
+ Network itmo-clean_control Created 
+ Network itmo-clean_ingress Creating 
+ Network itmo-clean_ingress Created 
+ Network itmo-clean_model Creating 
+ Network itmo-clean_model Created 
+ Volume itmo-clean_model-state Creating 
+ Volume itmo-clean_model-state Created 
+ Volume itmo-clean_harness-state Creating 
+ Volume itmo-clean_harness-state Created 
+ Volume itmo-clean_sandbox-state Creating 
+ Volume itmo-clean_sandbox-state Created 
+ Container itmo-clean-llm-proxy-1 Creating 
+ Container itmo-clean-sandbox-image-1 Creating 
+ Container itmo-clean-llm-proxy-1 Created 
+ Container itmo-clean-sandbox-image-1 Created 
+ Container itmo-clean-sandbox-manager-1 Creating 
+ Container itmo-clean-sandbox-manager-1 Created 
+ Container itmo-clean-harness-1 Creating 
+ Container itmo-clean-harness-1 Created 
+ Container itmo-clean-gateway-1 Creating 
+ Container itmo-clean-gateway-1 Created 
+ Container itmo-clean-sandbox-image-1 Starting 
+ Container itmo-clean-llm-proxy-1 Starting 
+ Container itmo-clean-sandbox-image-1 Started 
+ Container itmo-clean-sandbox-image-1 Waiting 
+ Container itmo-clean-llm-proxy-1 Started 
+ Container itmo-clean-sandbox-image-1 Exited 
+ Container itmo-clean-sandbox-manager-1 Starting 
+ Container itmo-clean-sandbox-manager-1 Started 
+ Container itmo-clean-llm-proxy-1 Waiting 
+ Container itmo-clean-sandbox-manager-1 Waiting 
+ Container itmo-clean-llm-proxy-1 Healthy 
+ Container itmo-clean-sandbox-manager-1 Healthy 
+ Container itmo-clean-harness-1 Starting 
+ Container itmo-clean-harness-1 Started 
+ Container itmo-clean-harness-1 Waiting 
+ Container itmo-clean-harness-1 Healthy 
+ Container itmo-clean-gateway-1 Starting 
+ Container itmo-clean-gateway-1 Started 
+ Container itmo-clean-sandbox-manager-1 Waiting 
+ Container itmo-clean-llm-proxy-1 Waiting 
+ Container itmo-clean-harness-1 Waiting 
+ Container itmo-clean-gateway-1 Waiting 
+ Container itmo-clean-sandbox-image-1 Waiting 
+ Container itmo-clean-sandbox-manager-1 Healthy 
+ Container itmo-clean-sandbox-image-1 Exited 
+ Container itmo-clean-llm-proxy-1 Healthy 
+ Container itmo-clean-harness-1 Healthy 
+ Container itmo-clean-gateway-1 Healthy 
+ Container itmo-clean-llm-proxy-1 Recreate 
+ Container itmo-clean-sandbox-manager-1 Running 
+ Container itmo-clean-llm-proxy-1 Recreated 
+ Container itmo-clean-harness-1 Running 
+ Container itmo-clean-gateway-1 Running 
+ Container itmo-clean-sandbox-image-1 Starting 
+ Container itmo-clean-llm-proxy-1 Starting 
+ Container itmo-clean-sandbox-image-1 Started 
+ Container itmo-clean-sandbox-image-1 Waiting 
+ Container itmo-clean-llm-proxy-1 Started 
+ Container itmo-clean-sandbox-image-1 Exited 
+ Container itmo-clean-sandbox-manager-1 Waiting 
+ Container itmo-clean-llm-proxy-1 Waiting 
+ Container itmo-clean-sandbox-manager-1 Healthy 
+ Container itmo-clean-llm-proxy-1 Healthy 
+ Container itmo-clean-harness-1 Waiting 
+ Container itmo-clean-harness-1 Healthy 
+ Container itmo-clean-llm-proxy-1 Waiting 
+ Container itmo-clean-harness-1 Waiting 
+ Container itmo-clean-gateway-1 Waiting 
+ Container itmo-clean-sandbox-image-1 Waiting 
+ Container itmo-clean-sandbox-manager-1 Waiting 
+ Container itmo-clean-harness-1 Healthy 
+ Container itmo-clean-llm-proxy-1 Healthy 
+ Container itmo-clean-sandbox-image-1 Exited 
+ Container itmo-clean-gateway-1 Healthy 
+ Container itmo-clean-sandbox-manager-1 Healthy 
+ Container itmo-clean-tests-run-5b1a84ed4960 Creating 
+ Container itmo-clean-tests-run-5b1a84ed4960 Created 
+........................................................................ [ 29%]
+........................................................................ [ 59%]
+........................................................................ [ 88%]
+............................                                             [100%]
+=============================== warnings summary ===============================
+tests/test_model_expectations.py::test_server_rejects_mismatch_before_run_is_accepted[actual0-mock-None]
+  /app/runtime/harness.py:41: DeprecationWarning: 
+          on_event is deprecated, use lifespan event handlers instead.
+  
+          Read more about it in the
+          [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+          
+    @app.on_event("startup")
+
+tests/test_model_expectations.py::test_server_rejects_mismatch_before_run_is_accepted[actual0-mock-None]
+  /usr/local/lib/python3.12/site-packages/fastapi/applications.py:4495: DeprecationWarning: 
+          on_event is deprecated, use lifespan event handlers instead.
+  
+          Read more about it in the
+          [FastAPI docs for Lifespan Events](https://fastapi.tiangolo.com/advanced/events/).
+          
+    return self.router.on_event(event_type)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+244 passed, 2 warnings in 18.83s
+ Container itmo-clean-tests-run-78ac2e7f7aa4 Creating 
+ Container itmo-clean-tests-run-78ac2e7f7aa4 Created 
+{
+  "kind": "task_package_validation_not_model_run",
+  "pass": true,
+  "tasks": [
+    {
+      "task_id": "B1.1",
+      "missing_or_unchanged_rejected": true,
+      "correct_accepted": true,
+      "trap_rejected": true
+    },
+    {
+      "task_id": "B1.2",
+      "missing_or_unchanged_rejected": true,
+      "correct_accepted": true,
+      "trap_rejected": true
+    },
+    {
+      "task_id": "B1.3",
+      "missing_or_unchanged_rejected": true,
+      "correct_accepted": true,
+      "trap_rejected": true
+    },
+    {
+      "task_id": "B2.1",
+      "missing_or_unchanged_rejected": true,
+      "correct_accepted": true,
+      "trap_rejected": true
+    },
+    {
+      "task_id": "B2.2",
+      "missing_or_unchanged_rejected": true,
+      "correct_accepted": true,
+      "trap_rejected": true
+    },
+    {
+      "task_id": "B2.3",
+      "missing_or_unchanged_rejected": true,
+      "correct_accepted": true,
+      "trap_rejected": true
+    },
+    {
+      "task_id": "B3.1",
+      "missing_or_unchanged_rejected": true,
+      "correct_accepted": true,
+      "trap_rejected": true
+    },
+    {
+      "task_id": "B3.2",
+      "missing_or_unchanged_rejected": true,
+      "correct_accepted": true,
+      "trap_rejected": true
+    },
+    {
+      "task_id": "B3.3",
+      "missing_or_unchanged_rejected": true,
+      "correct_accepted": true,
+      "trap_rejected": true
+    },
+    {
+      "task_id": "B4.1",
+      "missing_or_unchanged_rejected": true,
+      "correct_accepted": true,
+      "trap_rejected": true
+    },
+    {
+      "task_id": "B4.2",
+      "missing_or_unchanged_rejected": true,
+      "correct_accepted": true,
+      "trap_rejected": true
+    },
+    {
+      "task_id": "B4.3",
+      "missing_or_unchanged_rejected": true,
+      "correct_accepted": true,
+      "trap_rejected": true
+    },
+    {
+      "task_id": "B5.1",
+      "missing_or_unchanged_rejected": true,
+      "correct_accepted": true,
+      "trap_rejected": true
+    },
+    {
+      "task_id": "B5.2",
+      "missing_or_unchanged_rejected": true,
+      "correct_accepted": true,
+      "trap_rejected": true
+    },
+    {
+      "task_id": "B5.3",
+      "missing_or_unchanged_rejected": true,
+      "correct_accepted": true,
+      "trap_rejected": true
+    }
+  ],
+  "scales": {
+    "contract_pages": 15,
+    "contract_words": 6437,
+    "search_files": 200,
+    "environment_readers": 12,
+    "upstream_B1.1_exact": true
+  },
+  "extra_cases": [
+    "missing_second_yaml_rejected",
+    "modified_source_rejected",
+    "artifact_symlink_rejected"
+  ]
+}

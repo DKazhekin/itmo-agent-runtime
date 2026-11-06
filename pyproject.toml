@@ -1,0 +1,16 @@
+[project]
+name = "itmo-agent-runtime"
+version = "0.1.0"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "fastapi==0.115.12",
+  "uvicorn==0.34.3",
+  "httpx==0.28.1",
+  "docker==7.1.0",
+  "jsonschema==4.23.0",
+  "PyYAML==6.0.2",
+  "pytest==8.4.1",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

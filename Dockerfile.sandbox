@@ -1,0 +1,6 @@
+FROM python:3.12.12-slim-bookworm
+RUN groupadd -g 1000 agent && useradd -u 1000 -g 1000 -M agent
+USER 1000:1000
+WORKDIR /work
+ENV PYTHONDONTWRITEBYTECODE=1
+CMD ["sleep", "infinity"]

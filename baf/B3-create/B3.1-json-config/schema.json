@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "service",
+    "environment",
+    "listen",
+    "retries",
+    "enabled",
+    "tags"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "service": {
+      "const": "inventory"
+    },
+    "environment": {
+      "const": "staging"
+    },
+    "listen": {
+      "type": "object",
+      "required": [
+        "host",
+        "port"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "host": {
+          "const": "127.0.0.1"
+        },
+        "port": {
+          "type": "integer",
+          "const": 8137
+        }
+      }
+    },
+    "retries": {
+      "type": "integer",
+      "const": 3
+    },
+    "enabled": {
+      "type": "boolean",
+      "const": true
+    },
+    "tags": {
+      "type": "array",
+      "const": [
+        "internal",
+        "read-only"
+      ]
+    }
+  }
+}

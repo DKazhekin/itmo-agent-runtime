@@ -1,0 +1,2 @@
+{"seq": 550, "version": "0", "trace_id": "c9575805dec84496a0c9637d09e5ff30", "type": "started", "time": 1793969068.2014155, "session_id": "c21635284b0042afbff367441acb2396"}
+{"seq": 551, "version": "0", "trace_id": "c9575805dec84496a0c9637d09e5ff30", "type": "result", "time": 1793969068.5723312, "result": {"version": "0", "request_id": "c9575805dec84496a0c9637d09e5ff30", "session_id": "c21635284b0042afbff367441acb2396", "status": "error", "error": "transport_error", "detail": "HTTPException"}}

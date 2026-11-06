@@ -1,0 +1,1252 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:itmo:client-v0",
+  "$defs": {
+    "Session": {
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "const": "0",
+          "default": "0",
+          "title": "Version",
+          "type": "string"
+        },
+        "session_id": {
+          "pattern": "^[a-zA-Z0-9_-]{1,64}$",
+          "title": "Session Id",
+          "type": "string"
+        },
+        "files": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "Files",
+          "type": "object"
+        }
+      },
+      "required": [
+        "session_id"
+      ],
+      "title": "Session",
+      "type": "object"
+    },
+    "Run": {
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "const": "0",
+          "default": "0",
+          "title": "Version",
+          "type": "string"
+        },
+        "request_id": {
+          "pattern": "^[a-zA-Z0-9_-]{1,64}$",
+          "title": "Request Id",
+          "type": "string"
+        },
+        "session_id": {
+          "pattern": "^[a-zA-Z0-9_-]{1,64}$",
+          "title": "Session Id",
+          "type": "string"
+        },
+        "instruction": {
+          "maxLength": 50000,
+          "minLength": 1,
+          "title": "Instruction",
+          "type": "string"
+        },
+        "expected_mode": {
+          "default": "mock",
+          "enum": [
+            "mock",
+            "real"
+          ],
+          "title": "Expected Mode",
+          "type": "string"
+        },
+        "expected_model": {
+          "anyOf": [
+            {
+              "maxLength": 200,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Expected Model"
+        },
+        "max_steps": {
+          "default": 30,
+          "maximum": 60,
+          "minimum": 1,
+          "title": "Max Steps",
+          "type": "integer"
+        },
+        "timeout_seconds": {
+          "default": 240,
+          "maximum": 600,
+          "minimum": 1,
+          "title": "Timeout Seconds",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "request_id",
+        "session_id",
+        "instruction"
+      ],
+      "title": "Run",
+      "type": "object"
+    },
+    "Operation": {
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "const": "0",
+          "default": "0",
+          "title": "Version",
+          "type": "string"
+        },
+        "operation_id": {
+          "pattern": "^[a-zA-Z0-9_-]{1,100}$",
+          "title": "Operation Id",
+          "type": "string"
+        },
+        "session_id": {
+          "pattern": "^[a-zA-Z0-9_-]{1,64}$",
+          "title": "Session Id",
+          "type": "string"
+        },
+        "tool": {
+          "pattern": "^(RunCommand|ReadFile|WriteFile)$",
+          "title": "Tool",
+          "type": "string"
+        },
+        "arguments": {
+          "additionalProperties": true,
+          "title": "Arguments",
+          "type": "object"
+        },
+        "timeout_seconds": {
+          "default": 20,
+          "maximum": 60,
+          "minimum": 1,
+          "title": "Timeout Seconds",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "operation_id",
+        "session_id",
+        "tool",
+        "arguments"
+      ],
+      "title": "Operation",
+      "type": "object"
+    },
+    "RunCommandArguments": {
+      "type": "object",
+      "properties": {
+        "command": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "command"
+      ],
+      "additionalProperties": false
+    },
+    "ReadFileArguments": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "path"
+      ],
+      "additionalProperties": false
+    },
+    "WriteFileArguments": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "content": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "path",
+        "content"
+      ],
+      "additionalProperties": false
+    },
+    "HealthResponse": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string",
+          "const": "0"
+        },
+        "status": {
+          "const": "ready"
+        }
+      },
+      "required": [
+        "version",
+        "status"
+      ],
+      "additionalProperties": false
+    },
+    "ClientHealthResponse": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string",
+          "const": "0"
+        },
+        "status": {
+          "const": "ready"
+        },
+        "model_mode": {
+          "enum": [
+            "mock",
+            "real"
+          ]
+        },
+        "model": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "version",
+        "status",
+        "model_mode",
+        "model"
+      ],
+      "additionalProperties": false
+    },
+    "CollectResponse": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string",
+          "const": "0"
+        },
+        "files": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "contentEncoding": "base64"
+          }
+        }
+      },
+      "required": [
+        "version",
+        "files"
+      ],
+      "additionalProperties": false
+    },
+    "ReleaseResponse": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string",
+          "const": "0"
+        },
+        "status": {
+          "const": "released"
+        }
+      },
+      "required": [
+        "version",
+        "status"
+      ],
+      "additionalProperties": false
+    },
+    "CancelResponse": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string",
+          "const": "0"
+        },
+        "status": {
+          "const": "cancelled"
+        }
+      },
+      "required": [
+        "version",
+        "status"
+      ],
+      "additionalProperties": false
+    },
+    "ValidationIssue": {
+      "type": "object",
+      "properties": {
+        "loc": {
+          "type": "array",
+          "items": {
+            "type": [
+              "string",
+              "integer"
+            ]
+          }
+        },
+        "msg": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "input": {},
+        "ctx": {
+          "type": "object"
+        },
+        "url": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "loc",
+        "msg",
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "HTTPErrorResponse": {
+      "type": "object",
+      "properties": {
+        "detail": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/ValidationIssue"
+              }
+            }
+          ]
+        }
+      },
+      "required": [
+        "detail"
+      ],
+      "additionalProperties": false
+    },
+    "OperationRequest": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/Operation"
+        },
+        {
+          "if": {
+            "properties": {
+              "tool": {
+                "const": "RunCommand"
+              }
+            },
+            "required": [
+              "tool"
+            ]
+          },
+          "then": {
+            "properties": {
+              "arguments": {
+                "$ref": "#/$defs/RunCommandArguments"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "tool": {
+                "const": "ReadFile"
+              }
+            },
+            "required": [
+              "tool"
+            ]
+          },
+          "then": {
+            "properties": {
+              "arguments": {
+                "$ref": "#/$defs/ReadFileArguments"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "tool": {
+                "const": "WriteFile"
+              }
+            },
+            "required": [
+              "tool"
+            ]
+          },
+          "then": {
+            "properties": {
+              "arguments": {
+                "$ref": "#/$defs/WriteFileArguments"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "SessionReady": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string",
+          "const": "0"
+        },
+        "session_id": {
+          "pattern": "^[a-zA-Z0-9_-]{1,64}$",
+          "title": "Session Id",
+          "type": "string"
+        },
+        "status": {
+          "const": "ready"
+        }
+      },
+      "required": [
+        "version",
+        "session_id",
+        "status"
+      ],
+      "additionalProperties": false
+    },
+    "SessionInProgress": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string",
+          "const": "0"
+        },
+        "session_id": {
+          "pattern": "^[a-zA-Z0-9_-]{1,64}$",
+          "title": "Session Id",
+          "type": "string"
+        },
+        "status": {
+          "const": "running"
+        }
+      },
+      "required": [
+        "version",
+        "session_id",
+        "status"
+      ],
+      "additionalProperties": false
+    },
+    "SessionReleased": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string",
+          "const": "0"
+        },
+        "session_id": {
+          "pattern": "^[a-zA-Z0-9_-]{1,64}$",
+          "title": "Session Id",
+          "type": "string"
+        },
+        "status": {
+          "const": "released"
+        }
+      },
+      "required": [
+        "version",
+        "session_id",
+        "status"
+      ],
+      "additionalProperties": false
+    },
+    "SessionFailure": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string",
+          "const": "0"
+        },
+        "session_id": {
+          "pattern": "^[a-zA-Z0-9_-]{1,64}$",
+          "title": "Session Id",
+          "type": "string"
+        },
+        "status": {
+          "const": "error"
+        },
+        "error": {
+          "const": "sandbox_error"
+        },
+        "detail": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "version",
+        "session_id",
+        "status",
+        "error"
+      ],
+      "additionalProperties": false
+    },
+    "SessionResponse": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/SessionReady"
+        },
+        {
+          "$ref": "#/$defs/SessionInProgress"
+        },
+        {
+          "$ref": "#/$defs/SessionReleased"
+        },
+        {
+          "$ref": "#/$defs/SessionFailure"
+        }
+      ]
+    },
+    "OperationInProgress": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string",
+          "const": "0"
+        },
+        "operation_id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_-]{1,100}$"
+        },
+        "status": {
+          "const": "running"
+        }
+      },
+      "required": [
+        "version",
+        "operation_id",
+        "status"
+      ],
+      "additionalProperties": false
+    },
+    "OperationSuccess": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string",
+          "const": "0"
+        },
+        "operation_id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_-]{1,100}$"
+        },
+        "status": {
+          "const": "success"
+        },
+        "exit_code": {
+          "const": 0
+        },
+        "stdout": {
+          "type": "string"
+        },
+        "stderr": {
+          "type": "string"
+        },
+        "truncated": {
+          "type": "boolean"
+        },
+        "duration_seconds": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "version",
+        "operation_id",
+        "status",
+        "exit_code",
+        "stdout",
+        "stderr",
+        "truncated",
+        "duration_seconds"
+      ],
+      "additionalProperties": false
+    },
+    "OperationFailure": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string",
+          "const": "0"
+        },
+        "operation_id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_-]{1,100}$"
+        },
+        "status": {
+          "const": "error"
+        },
+        "error": {
+          "enum": [
+            "command_error",
+            "timeout",
+            "sandbox_error"
+          ]
+        },
+        "exit_code": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "stdout": {
+          "type": "string"
+        },
+        "stderr": {
+          "type": "string"
+        },
+        "truncated": {
+          "type": "boolean"
+        },
+        "duration_seconds": {
+          "type": "number",
+          "minimum": 0
+        },
+        "detail": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "version",
+        "operation_id",
+        "status",
+        "error"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "error": {
+                "const": "command_error"
+              }
+            },
+            "required": [
+              "error"
+            ]
+          },
+          "then": {
+            "required": [
+              "exit_code",
+              "stdout",
+              "stderr",
+              "truncated",
+              "duration_seconds"
+            ],
+            "properties": {
+              "exit_code": {
+                "type": "integer",
+                "not": {
+                  "const": 0
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "OperationResult": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/OperationSuccess"
+        },
+        {
+          "$ref": "#/$defs/OperationFailure"
+        }
+      ]
+    },
+    "OperationResponse": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/OperationInProgress"
+        },
+        {
+          "$ref": "#/$defs/OperationSuccess"
+        },
+        {
+          "$ref": "#/$defs/OperationFailure"
+        }
+      ]
+    },
+    "RunInProgress": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string",
+          "const": "0"
+        },
+        "request_id": {
+          "pattern": "^[a-zA-Z0-9_-]{1,64}$",
+          "title": "Request Id",
+          "type": "string"
+        },
+        "session_id": {
+          "pattern": "^[a-zA-Z0-9_-]{1,64}$",
+          "title": "Session Id",
+          "type": "string"
+        },
+        "status": {
+          "const": "running"
+        }
+      },
+      "required": [
+        "version",
+        "request_id",
+        "session_id",
+        "status"
+      ],
+      "additionalProperties": false
+    },
+    "RunSuccess": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string",
+          "const": "0"
+        },
+        "request_id": {
+          "pattern": "^[a-zA-Z0-9_-]{1,64}$",
+          "title": "Request Id",
+          "type": "string"
+        },
+        "session_id": {
+          "pattern": "^[a-zA-Z0-9_-]{1,64}$",
+          "title": "Session Id",
+          "type": "string"
+        },
+        "status": {
+          "const": "success"
+        },
+        "answer": {
+          "type": "string"
+        },
+        "duration_seconds": {
+          "type": "number",
+          "minimum": 0
+        },
+        "model_mode": {
+          "enum": [
+            "mock",
+            "real"
+          ]
+        }
+      },
+      "required": [
+        "version",
+        "request_id",
+        "session_id",
+        "status",
+        "answer",
+        "duration_seconds",
+        "model_mode"
+      ],
+      "additionalProperties": false
+    },
+    "RunFailure": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string",
+          "const": "0"
+        },
+        "request_id": {
+          "pattern": "^[a-zA-Z0-9_-]{1,64}$",
+          "title": "Request Id",
+          "type": "string"
+        },
+        "session_id": {
+          "pattern": "^[a-zA-Z0-9_-]{1,64}$",
+          "title": "Session Id",
+          "type": "string"
+        },
+        "status": {
+          "const": "error"
+        },
+        "error": {
+          "enum": [
+            "harness_restarted",
+            "timeout",
+            "sandbox_error",
+            "step_limit",
+            "transport_error",
+            "model_error"
+          ]
+        },
+        "detail": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "version",
+        "request_id",
+        "session_id",
+        "status",
+        "error"
+      ],
+      "additionalProperties": false
+    },
+    "RunCancelled": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string",
+          "const": "0"
+        },
+        "request_id": {
+          "pattern": "^[a-zA-Z0-9_-]{1,64}$",
+          "title": "Request Id",
+          "type": "string"
+        },
+        "session_id": {
+          "pattern": "^[a-zA-Z0-9_-]{1,64}$",
+          "title": "Session Id",
+          "type": "string"
+        },
+        "status": {
+          "const": "cancelled"
+        }
+      },
+      "required": [
+        "version",
+        "request_id",
+        "session_id",
+        "status"
+      ],
+      "additionalProperties": false
+    },
+    "RunResult": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/RunSuccess"
+        },
+        {
+          "$ref": "#/$defs/RunFailure"
+        },
+        {
+          "$ref": "#/$defs/RunCancelled"
+        }
+      ]
+    },
+    "RunResponse": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/RunInProgress"
+        },
+        {
+          "$ref": "#/$defs/RunSuccess"
+        },
+        {
+          "$ref": "#/$defs/RunFailure"
+        },
+        {
+          "$ref": "#/$defs/RunCancelled"
+        }
+      ]
+    },
+    "InvalidToolResult": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "const": "error"
+        },
+        "error": {
+          "const": "invalid_tool"
+        },
+        "detail": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "status",
+        "error",
+        "detail"
+      ],
+      "additionalProperties": false
+    },
+    "StartedEvent": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string",
+          "const": "0"
+        },
+        "seq": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "trace_id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_-]{1,100}$"
+        },
+        "time": {
+          "type": "number",
+          "minimum": 0
+        },
+        "type": {
+          "const": "started"
+        },
+        "session_id": {
+          "pattern": "^[a-zA-Z0-9_-]{1,64}$",
+          "title": "Session Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "version",
+        "seq",
+        "trace_id",
+        "time",
+        "type",
+        "session_id"
+      ],
+      "additionalProperties": false
+    },
+    "ModelEvent": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string",
+          "const": "0"
+        },
+        "seq": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "trace_id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_-]{1,100}$"
+        },
+        "time": {
+          "type": "number",
+          "minimum": 0
+        },
+        "type": {
+          "const": "model"
+        },
+        "step": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "usage": {
+          "type": "object",
+          "description": "Provider-native token usage; an empty object means unavailable."
+        },
+        "model": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "mode": {
+          "enum": [
+            "mock",
+            "real"
+          ]
+        }
+      },
+      "required": [
+        "version",
+        "seq",
+        "trace_id",
+        "time",
+        "type",
+        "step",
+        "usage",
+        "model",
+        "mode"
+      ],
+      "additionalProperties": false
+    },
+    "ToolCallEvent": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string",
+          "const": "0"
+        },
+        "seq": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "trace_id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_-]{1,100}$"
+        },
+        "time": {
+          "type": "number",
+          "minimum": 0
+        },
+        "type": {
+          "const": "tool_call"
+        },
+        "operation_id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_-]{1,100}$"
+        },
+        "tool": {
+          "type": "string",
+          "description": "Raw model-selected name, recorded before validation."
+        },
+        "arguments": {
+          "description": "Raw JSON arguments, recorded before tool schema validation."
+        }
+      },
+      "required": [
+        "version",
+        "seq",
+        "trace_id",
+        "time",
+        "type",
+        "operation_id",
+        "tool",
+        "arguments"
+      ],
+      "additionalProperties": false
+    },
+    "ToolResultEvent": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string",
+          "const": "0"
+        },
+        "seq": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "trace_id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_-]{1,100}$"
+        },
+        "time": {
+          "type": "number",
+          "minimum": 0
+        },
+        "type": {
+          "const": "tool_result"
+        },
+        "operation_id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_-]{1,100}$"
+        },
+        "result": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/OperationResponse"
+            },
+            {
+              "$ref": "#/$defs/InvalidToolResult"
+            }
+          ]
+        }
+      },
+      "required": [
+        "version",
+        "seq",
+        "trace_id",
+        "time",
+        "type",
+        "operation_id",
+        "result"
+      ],
+      "additionalProperties": false
+    },
+    "ClientResultEvent": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string",
+          "const": "0"
+        },
+        "seq": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "trace_id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_-]{1,100}$"
+        },
+        "time": {
+          "type": "number",
+          "minimum": 0
+        },
+        "type": {
+          "const": "result"
+        },
+        "result": {
+          "$ref": "#/$defs/RunResult"
+        }
+      },
+      "required": [
+        "version",
+        "seq",
+        "trace_id",
+        "time",
+        "type",
+        "result"
+      ],
+      "additionalProperties": false
+    },
+    "SandboxResultEvent": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string",
+          "const": "0"
+        },
+        "seq": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "trace_id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_-]{1,100}$"
+        },
+        "time": {
+          "type": "number",
+          "minimum": 0
+        },
+        "type": {
+          "const": "result"
+        },
+        "result": {
+          "$ref": "#/$defs/OperationResult"
+        }
+      },
+      "required": [
+        "version",
+        "seq",
+        "trace_id",
+        "time",
+        "type",
+        "result"
+      ],
+      "additionalProperties": false
+    },
+    "ClientEvent": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/StartedEvent"
+        },
+        {
+          "$ref": "#/$defs/ModelEvent"
+        },
+        {
+          "$ref": "#/$defs/ToolCallEvent"
+        },
+        {
+          "$ref": "#/$defs/ToolResultEvent"
+        },
+        {
+          "$ref": "#/$defs/ClientResultEvent"
+        }
+      ]
+    },
+    "SandboxEvent": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/StartedEvent"
+        },
+        {
+          "$ref": "#/$defs/SandboxResultEvent"
+        }
+      ]
+    },
+    "ClientEventBatch": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string",
+          "const": "0"
+        },
+        "events": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ClientEvent"
+          }
+        }
+      },
+      "required": [
+        "version",
+        "events"
+      ],
+      "additionalProperties": false
+    },
+    "SandboxEventBatch": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string",
+          "const": "0"
+        },
+        "events": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/SandboxEvent"
+          }
+        }
+      },
+      "required": [
+        "version",
+        "events"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "oneOf": [
+    {
+      "$ref": "#/$defs/Session"
+    },
+    {
+      "$ref": "#/$defs/Run"
+    },
+    {
+      "$ref": "#/$defs/SessionResponse"
+    },
+    {
+      "$ref": "#/$defs/RunResponse"
+    },
+    {
+      "$ref": "#/$defs/ClientEventBatch"
+    },
+    {
+      "$ref": "#/$defs/ClientHealthResponse"
+    },
+    {
+      "$ref": "#/$defs/CollectResponse"
+    },
+    {
+      "$ref": "#/$defs/ReleaseResponse"
+    },
+    {
+      "$ref": "#/$defs/HTTPErrorResponse"
+    }
+  ]
+}

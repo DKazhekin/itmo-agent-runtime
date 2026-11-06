@@ -1,0 +1,77 @@
+{
+  "kind": "recorded_checkpoint_evaluation",
+  "date": "2026-11-06",
+  "course_commit": "b01ddf7b89e5c603985e3d5b5af958bebc7b1972",
+  "offline_tests": {
+    "passed": 244,
+    "failed": 0,
+    "skipped": 0,
+    "warnings": 2,
+    "task_package_cases": 48,
+    "environments": [
+      "macOS with Docker in Colima",
+      "separate source tree and empty project volumes in the prepared Linux VM"
+    ],
+    "logs": [
+      "checkpoint-final-mac.txt",
+      "checkpoint-final-linux.txt"
+    ]
+  },
+  "mounting": {
+    "passed": 17,
+    "total": 17,
+    "path": "../mounting/attempt-3/result.json",
+    "prior_attempts_retained": 2
+  },
+  "real_baf": {
+    "passed": 15,
+    "total": 15,
+    "quality_evidence": true,
+    "path": "../baf/real/20261106T125440Z-e6a11cdd/summary.json",
+    "model": "deepseek/deepseek-v4.1-flash-1017",
+    "reasoning_effort": "high",
+    "provider": "deepinfra/fp8"
+  },
+  "real_attempts": [
+    {
+      "path": "../baf/real/20261106T124427Z-beceee4d/summary.json",
+      "passed": 0,
+      "total": 1
+    },
+    {
+      "path": "../baf/real/20261106T124843Z-82091413/summary.json",
+      "passed": 1,
+      "total": 1
+    },
+    {
+      "path": "../baf/real/20261106T124926Z-68548bad/summary.json",
+      "passed": 12,
+      "total": 15
+    },
+    {
+      "path": "../baf/real/20261106T125440Z-e6a11cdd/summary.json",
+      "passed": 15,
+      "total": 15
+    }
+  ],
+  "total_provider_cost_usd": "0.018821183",
+  "source_hash_semantics": "Run manifests preserve hashes of the evaluated source revision. They are historical evidence, not hashes of the current checkout.",
+  "publication": {
+    "task_results_events_and_artifacts": "byte-identical to the recorded attempts",
+    "omitted_metadata": [
+      "operator approval text",
+      "credential references",
+      "budget-account identifiers",
+      "budget-account state"
+    ],
+    "mounting_placeholders": [
+      "<HOME>",
+      "<HOST_KEY>"
+    ]
+  },
+  "limitations": [
+    "The Linux run used an existing prepared VM, not a newly installed operating system.",
+    "Mounting is a separate prototype, not integrated into the runtime sandbox.",
+    "A successful recorded run is not a guarantee that later model runs will succeed."
+  ]
+}

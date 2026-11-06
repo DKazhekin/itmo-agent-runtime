@@ -1,0 +1,37 @@
+{
+  "task": "B4.2",
+  "pass": true,
+  "state": {
+    "version": "0",
+    "request_id": "a48b2ed586f8451cb7fad348ffa4dd16",
+    "session_id": "f6c994397cd74dce9d9667c5dab485f1",
+    "status": "success",
+    "answer": "Готово. Переименовал `calc_total` → `compute_total` по всему проекту.\n\n**Изменённые файлы (5):**\n\n| Файл | Что изменено |\n|---|---|\n| `billing/totals.py` | определение функции |\n| `billing/invoice.py` | импорт + вызов |\n| `billing/__init__.py` | реэкспорт |\n| `app.py` | импорт + вызов |\n| `test_billing.py` | импорт + вызов |\n\n**Проверки:**\n- `grep -rn \"calc_total\"` по проекту — совпадений нет (exit 1), то есть старых ссылок не осталось.\n- Тесты: `python -m unittest -v` → **2 теста, OK** (как и до изменений).\n- Дополнительно проверил `app.py`, который тестами не покрыт: `basket_amount([10, 5])` → `15`, `compute_total([10, 5], tax_rate=0.2)` → `18.0` — поведение сохранено.\n\n**Не тронуто:** `README.md` (упоминания `calc_total` в нём не было), `assets/rates.csv` — файлы, не связанные с переименованием, оставлены как есть. Логика функции не менялась, изменилось только имя.",
+    "duration_seconds": 17.204518720000124,
+    "model_mode": "real"
+  },
+  "checker": {
+    "exit_code": 0,
+    "stdout": "{\"pass\": true, \"reason\": \"ok\"}\n",
+    "stderr": ""
+  },
+  "tool_evidence": {
+    "pass": true,
+    "reason": "tool-execution evidence is not required for this task"
+  },
+  "duration_seconds": 17.638852251693606,
+  "task_id": "B4.2",
+  "repeat": 1,
+  "seconds": 17.638852251693606,
+  "tokens_in": 17283,
+  "tokens_out": 1663,
+  "tokens_complete": true,
+  "outcome": "success",
+  "models": [
+    "deepseek/deepseek-v4.1-flash-1017"
+  ],
+  "modes": [
+    "real"
+  ],
+  "reason": "{\"pass\": true, \"reason\": \"ok\"}\n"
+}

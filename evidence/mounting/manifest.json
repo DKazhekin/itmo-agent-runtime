@@ -1,0 +1,82 @@
+{
+  "accessed_on": "2026-11-06",
+  "sources": [
+    {
+      "name": "sshfs",
+      "version": "3.7.6",
+      "commit": "7a2d988775446ebe7af9b01c99b3b8e86bddb05a",
+      "url": "https://github.com/libfuse/sshfs/tree/sshfs-3.7.6",
+      "archive_sha256": "67a3e166a39b07708497ee0aee308547dba386053cf8d816b4ce8a9b3066a6ce"
+    },
+    {
+      "name": "asyncssh",
+      "version": "2.24.1",
+      "url": "https://github.com/ronf/asyncssh/tree/v2.24.1",
+      "code_inspected": [
+        "SFTPServer.map_path",
+        "SFTPServer.readlink",
+        "SFTPServer.symlink",
+        "SFTPServer.reverse_map_path",
+        "SSHServer.validate_public_key"
+      ]
+    },
+    {
+      "name": "rclone",
+      "version": "1.75.2",
+      "commit": "be8d6044eacb843b74d335db0c5fbe09222031fe",
+      "url": "https://github.com/rclone/rclone/tree/v1.75.2",
+      "code_inspected": [
+        "backend/webdav/webdav.go",
+        "vfs/vfscommon/options.go"
+      ],
+      "executed": false
+    },
+    {
+      "name": "apple-nfs",
+      "version": "NFS-343.100.5",
+      "commit": "93733ffccece4daee73bf6306b291d1ae69130c0",
+      "url": "https://github.com/apple-oss-distributions/NFS/tree/NFS-343.100.5",
+      "code_inspected": [
+        "nfsd/exports.5",
+        "nfsd/nfsd.8",
+        "nfsd/nfsd.c: nfsd_server_thread, nfsd_accept_thread"
+      ],
+      "executed": false
+    }
+  ],
+  "test_code_sha256": {
+    "run.py": "3cc1044656796295d8c75c94ac679cc61f38760cf36a2168c3d87e244ea72a14",
+    "server.py": "4088971b6e8d34b537e69754c73b0a0993e352303116cc6537985ca19f2376ef",
+    "requirements.txt": "1f17139d2af30bc142c724f4ecb3a074ba4182bf6bf9ca68cce0c69e69dc4e0d"
+  },
+  "preparation_commands": [
+    "python3 -m venv /private/tmp/itmo-mount-venv",
+    "/private/tmp/itmo-mount-venv/bin/python -m pip install 'asyncssh==2.24.1'",
+    "colima ssh -- sudo apt-get update",
+    "colima ssh -- sudo apt-get install -y --no-install-recommends build-essential meson ninja-build pkg-config libfuse3-dev libglib2.0-dev",
+    "colima ssh -- sh -c 'mkdir -p /tmp/itmo-sshfs-build && curl -fsSL https://github.com/libfuse/sshfs/archive/refs/tags/sshfs-3.7.6.tar.gz -o /tmp/itmo-sshfs-build/source.tar.gz && sha256sum /tmp/itmo-sshfs-build/source.tar.gz && tar -xzf /tmp/itmo-sshfs-build/source.tar.gz -C /tmp/itmo-sshfs-build && meson setup /tmp/itmo-sshfs-build/build /tmp/itmo-sshfs-build/sshfs-sshfs-3.7.6 && ninja -C /tmp/itmo-sshfs-build/build && /tmp/itmo-sshfs-build/build/sshfs --version'"
+  ],
+  "attempts": [
+    {
+      "path": "attempt-1/result.json",
+      "passed": false,
+      "reason": "Base SFTP virtual-chroot readlink resolves relative target from process working directory; fixed fixture readlink"
+    },
+    {
+      "path": "attempt-2/result.json",
+      "passed": false,
+      "reason": "Test expected EIO after closed tunnel; observed legitimate auto-unmount followed by local ENOENT"
+    },
+    {
+      "path": "attempt-3/result.json",
+      "passed": true,
+      "checks": 17
+    }
+  ],
+  "cleanup": {
+    "ephemeral_mounts_processes_keys_files": "removed after every run",
+    "python_venv": "retained /private/tmp/itmo-mount-venv",
+    "linux_build": "retained /tmp/itmo-sshfs-build",
+    "vm_packages": "retained; 72 installed and 16 dependencies upgraded"
+  }
+}

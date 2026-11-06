@@ -1,0 +1,6 @@
+id: "B4.1"
+baf: "B4"
+level: "simple"
+instruction: "Обнови версию до 1.3 только в разделе Install в README.md. Остальное сохрани байт-в-байт."
+answer_file: "README.md"
+timeout_seconds: 180

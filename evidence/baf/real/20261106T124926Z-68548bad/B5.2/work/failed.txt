@@ -1,0 +1,3 @@
+test_calculations.CalculationTests.test_cent_rounding
+test_calculations.CalculationTests.test_empty_average
+test_calculations.CalculationTests.test_negative_discount

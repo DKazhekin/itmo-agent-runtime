@@ -1,0 +1,37 @@
+{
+  "task": "B1.1",
+  "pass": true,
+  "state": {
+    "version": "0",
+    "request_id": "3d51ef9b39654462b4b8e76eb4dd2df0",
+    "session_id": "51dbee39a01649a18cc311d9fe8c310e",
+    "status": "success",
+    "answer": "Сервис `orders` слушает порт **8137** (поле `service.listen.port` в `config/app.yaml`, хост `0.0.0.0`).\n\nЗначение `8080` в конфиге находится в комментарии и помечено как «старый порт, больше не используется», поэтому оно не учитывалось.\n\nВ файл `/work/answer.txt` записано только число: `8137` (без перевода строки, 4 байта).",
+    "duration_seconds": 10.341091557999789,
+    "model_mode": "real"
+  },
+  "checker": {
+    "exit_code": 0,
+    "stdout": "{\"pass\": true, \"reason\": \"ok\"}\n",
+    "stderr": ""
+  },
+  "tool_evidence": {
+    "pass": true,
+    "reason": "tool-execution evidence is not required for this task"
+  },
+  "duration_seconds": 10.816833915188909,
+  "task_id": "B1.1",
+  "repeat": 1,
+  "seconds": 10.816833915188909,
+  "tokens_in": 11799,
+  "tokens_out": 864,
+  "tokens_complete": true,
+  "outcome": "success",
+  "models": [
+    "deepseek/deepseek-v4.1-flash-1017"
+  ],
+  "modes": [
+    "real"
+  ],
+  "reason": "{\"pass\": true, \"reason\": \"ok\"}\n"
+}

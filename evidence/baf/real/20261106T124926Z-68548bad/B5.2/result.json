@@ -1,0 +1,37 @@
+{
+  "task": "B5.2",
+  "pass": false,
+  "state": {
+    "version": "0",
+    "request_id": "023823ffefd1456f8637d86a67eecfff",
+    "session_id": "882feccc0d534abaad3cfc39261791fd",
+    "status": "success",
+    "answer": "Готово. Прогнал `python -m unittest -v` (все 20 тестов, exit code 1 — `FAILED (failures=3)`) и записал имена упавших тестов в `/work/failed.txt`:\n\n```\ntest_calculations.CalculationTests.test_cent_rounding\ntest_calculations.CalculationTests.test_empty_average\ntest_calculations.CalculationTests.test_negative_discount\n```\n\nДетали по падениям (код не редактировал, как требует README):\n\n| Тест | Причина |\n|---|---|\n| `test_negative_discount` | `discounted(100, -10)` вернул `90`, ожидалось `110` — `abs(discount)` в `calculations.py` убирает знак, хотя тест ожидает увеличение цены при отрицательной скидке |\n| `test_empty_average` | `average([])` не бросает `ValueError` — `max(len(values), 1)` даёт деление на 1 вместо исключения |\n| `test_cent_rounding` | `rounded_cents(1.239)` вернул `123`, ожидалось `124` — `int()` усекает вместо округления |\n\nОстальные 17 тестов (`test_add_00`…`test_add_16`) прошли успешно.\n\nФайл сформирован скриптом, который парсит вывод unittest, — имена взяты напрямую из отчёта, без ручного ввода. Формат — по одному полному имени `модуль.Класс.метод` на строку, порядок совпадает с порядком в выводе тест-раннера.",
+    "duration_seconds": 10.996953690999362,
+    "model_mode": "real"
+  },
+  "checker": {
+    "exit_code": 0,
+    "stdout": "{\"pass\": true, \"reason\": \"ok\"}\n",
+    "stderr": ""
+  },
+  "tool_evidence": {
+    "pass": false,
+    "reason": "tool execution is unverified: shell expansions, multiline commands and escapes are unverified"
+  },
+  "duration_seconds": 11.536626376211643,
+  "task_id": "B5.2",
+  "repeat": 1,
+  "seconds": 11.536626376211643,
+  "tokens_in": 13001,
+  "tokens_out": 1002,
+  "tokens_complete": true,
+  "outcome": "success",
+  "models": [
+    "deepseek/deepseek-v4.1-flash-1017"
+  ],
+  "modes": [
+    "real"
+  ],
+  "reason": "tool execution is unverified: shell expansions, multiline commands and escapes are unverified"
+}

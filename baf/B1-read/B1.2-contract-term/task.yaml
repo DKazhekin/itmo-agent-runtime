@@ -1,0 +1,6 @@
+id: "B1.2"
+baf: "B1"
+level: "medium"
+instruction: "Какой срок оплаты в днях по договору contract.md? Запиши только число в answer.txt."
+answer_file: "answer.txt"
+timeout_seconds: 300

@@ -1,0 +1,37 @@
+{
+  "task": "B3.1",
+  "pass": true,
+  "state": {
+    "version": "0",
+    "request_id": "4af12533eb6d407da315ce8254391460",
+    "session_id": "396573d6c8d44ef0978fe19dd6d94204",
+    "status": "success",
+    "answer": "Готово — создан `/work/config.json`:\n\n```json\n{\n  \"service\": \"inventory\",\n  \"environment\": \"staging\",\n  \"listen\": {\n    \"host\": \"127.0.0.1\",\n    \"port\": 8137\n  },\n  \"retries\": 3,\n  \"enabled\": true,\n  \"tags\": [\n    \"internal\",\n    \"read-only\"\n  ]\n}\n```\n\nФайл проверен скриптом: набор ключей и их значения полностью совпадают со спецификацией, `port` и `retries` — целые числа, `enabled` — булево значение (не строки), лишних ключей нет.",
+    "duration_seconds": 6.952583373999914,
+    "model_mode": "real"
+  },
+  "checker": {
+    "exit_code": 0,
+    "stdout": "{\"pass\": true, \"reason\": \"ok\"}\n",
+    "stderr": ""
+  },
+  "tool_evidence": {
+    "pass": true,
+    "reason": "tool-execution evidence is not required for this task"
+  },
+  "duration_seconds": 7.456397334113717,
+  "task_id": "B3.1",
+  "repeat": 1,
+  "seconds": 7.456397334113717,
+  "tokens_in": 4344,
+  "tokens_out": 535,
+  "tokens_complete": true,
+  "outcome": "success",
+  "models": [
+    "deepseek/deepseek-v4.1-flash-1017"
+  ],
+  "modes": [
+    "real"
+  ],
+  "reason": "{\"pass\": true, \"reason\": \"ok\"}\n"
+}

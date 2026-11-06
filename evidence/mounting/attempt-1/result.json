@@ -1,0 +1,419 @@
+{
+  "started_utc": "2026-11-06T10:54:18.502204+00:00",
+  "host": "macOS-26.4.1-arm64-arm-64bit-Mach-O",
+  "python": "3.14.4 (main, Apr  7 2026, 13:13:20) [Clang 21.0.0 (clang-2100.0.123.102)]",
+  "checks": [
+    {
+      "name": "real_network_mount",
+      "passed": true,
+      "details": {
+        "filesystems": [
+          {
+            "target": "/tmp/itmo-mount-assotfds/mounted",
+            "source": "fixture@127.0.0.1:/",
+            "fstype": "fuse.sshfs",
+            "options": "rw,nosuid,nodev,relatime,user_id=501,group_id=1000,default_permissions"
+          }
+        ]
+      }
+    },
+    {
+      "name": "mac_to_linux_read_linux_write",
+      "passed": true,
+      "details": "Linux independently asserted Mac content"
+    },
+    {
+      "name": "linux_to_mac_read",
+      "passed": true,
+      "details": "Mac independently read both Linux writes"
+    }
+  ],
+  "commands": [
+    {
+      "argv": [
+        "/private/tmp/itmo-mount-venv/bin/python",
+        "/private/tmp/itmo-mount-stage/server.py",
+        "--root",
+        "/private/tmp/itmo-mount-assotfds/shared",
+        "--host-key",
+        "/private/tmp/itmo-mount-assotfds/host_key",
+        "--client-key",
+        "/private/tmp/itmo-mount-assotfds/client_key.pub",
+        "--ready",
+        "/private/tmp/itmo-mount-assotfds/ready"
+      ],
+      "background_log": "sftp-server.log"
+    },
+    {
+      "argv": [
+        "colima",
+        "ssh",
+        "--",
+        "cat",
+        "/etc/ssh/ssh_host_ed25519_key.pub"
+      ],
+      "returncode": 0,
+      "stdout": "ssh-ed25519 <HOST_KEY> root@colima\n",
+      "stderr": "",
+      "seconds": 0.2218
+    },
+    {
+      "argv": [
+        "ssh",
+        "-F",
+        "<HOME>/.colima/_lima/colima/ssh.config",
+        "-o",
+        "ControlMaster=no",
+        "-o",
+        "ControlPath=none",
+        "-o",
+        "StrictHostKeyChecking=yes",
+        "-o",
+        "NoHostAuthenticationForLocalhost=no",
+        "-o",
+        "UserKnownHostsFile=/private/tmp/itmo-mount-assotfds/vm_known_hosts",
+        "lima-colima",
+        "mkdir -p /tmp/itmo-mount-assotfds/mounted"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "",
+      "seconds": 0.064
+    },
+    {
+      "argv": [
+        "ssh",
+        "-F",
+        "<HOME>/.colima/_lima/colima/ssh.config",
+        "-o",
+        "ControlMaster=no",
+        "-o",
+        "ControlPath=none",
+        "-o",
+        "StrictHostKeyChecking=yes",
+        "-o",
+        "NoHostAuthenticationForLocalhost=no",
+        "-o",
+        "UserKnownHostsFile=/private/tmp/itmo-mount-assotfds/vm_known_hosts",
+        "lima-colima",
+        "umask 077; cat > /tmp/itmo-mount-assotfds/client_key"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "",
+      "seconds": 0.0642
+    },
+    {
+      "argv": [
+        "ssh",
+        "-F",
+        "<HOME>/.colima/_lima/colima/ssh.config",
+        "-o",
+        "ControlMaster=no",
+        "-o",
+        "ControlPath=none",
+        "-o",
+        "StrictHostKeyChecking=yes",
+        "-o",
+        "NoHostAuthenticationForLocalhost=no",
+        "-o",
+        "UserKnownHostsFile=/private/tmp/itmo-mount-assotfds/vm_known_hosts",
+        "lima-colima",
+        "cat > /tmp/itmo-mount-assotfds/known_hosts"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "",
+      "seconds": 0.0547
+    },
+    {
+      "argv": [
+        "ssh",
+        "-F",
+        "<HOME>/.colima/_lima/colima/ssh.config",
+        "-o",
+        "ControlMaster=no",
+        "-o",
+        "ControlPath=none",
+        "-o",
+        "StrictHostKeyChecking=yes",
+        "-o",
+        "NoHostAuthenticationForLocalhost=no",
+        "-o",
+        "UserKnownHostsFile=/private/tmp/itmo-mount-assotfds/vm_known_hosts",
+        "lima-colima",
+        "/tmp/itmo-sshfs-build/build/sshfs --version"
+      ],
+      "returncode": 0,
+      "stdout": "fusermount3 version: 3.14.0\nSSHFS version 3.7.6\nFUSE library version 3.14.0\nusing FUSE kernel interface version 7.31\n",
+      "stderr": "",
+      "seconds": 0.0586
+    },
+    {
+      "argv": [
+        "ssh",
+        "-F",
+        "<HOME>/.colima/_lima/colima/ssh.config",
+        "-o",
+        "ControlMaster=no",
+        "-o",
+        "ControlPath=none",
+        "-o",
+        "StrictHostKeyChecking=yes",
+        "-o",
+        "NoHostAuthenticationForLocalhost=no",
+        "-o",
+        "UserKnownHostsFile=/private/tmp/itmo-mount-assotfds/vm_known_hosts",
+        "lima-colima",
+        "uname -a"
+      ],
+      "returncode": 0,
+      "stdout": "Linux colima 6.8.0-117-generic #117-Ubuntu SMP PREEMPT_DYNAMIC Thu May  7 17:26:37 UTC 2026 aarch64 aarch64 aarch64 GNU/Linux\n",
+      "stderr": "",
+      "seconds": 0.0528
+    },
+    {
+      "argv": [
+        "ssh",
+        "-F",
+        "<HOME>/.colima/_lima/colima/ssh.config",
+        "-o",
+        "ControlMaster=no",
+        "-o",
+        "ControlPath=none",
+        "-o",
+        "StrictHostKeyChecking=yes",
+        "-o",
+        "NoHostAuthenticationForLocalhost=no",
+        "-o",
+        "UserKnownHostsFile=/private/tmp/itmo-mount-assotfds/vm_known_hosts",
+        "-N",
+        "-o",
+        "ExitOnForwardFailure=yes",
+        "-R",
+        "127.0.0.1:63869:127.0.0.1:63869",
+        "lima-colima"
+      ],
+      "background_log": "reverse-tunnel.log"
+    },
+    {
+      "argv": [
+        "ssh",
+        "-F",
+        "<HOME>/.colima/_lima/colima/ssh.config",
+        "-o",
+        "ControlMaster=no",
+        "-o",
+        "ControlPath=none",
+        "-o",
+        "StrictHostKeyChecking=yes",
+        "-o",
+        "NoHostAuthenticationForLocalhost=no",
+        "-o",
+        "UserKnownHostsFile=/private/tmp/itmo-mount-assotfds/vm_known_hosts",
+        "lima-colima",
+        "/tmp/itmo-sshfs-build/build/sshfs fixture@127.0.0.1:/ /tmp/itmo-mount-assotfds/mounted -f -o port=63869,IdentityFile=/tmp/itmo-mount-assotfds/client_key,UserKnownHostsFile=/tmp/itmo-mount-assotfds/known_hosts,StrictHostKeyChecking=yes,IdentitiesOnly=yes,BatchMode=yes,ServerAliveInterval=1,ServerAliveCountMax=2,ConnectTimeout=3,default_permissions,idmap=user,direct_io,dir_cache=no,attr_timeout=0,entry_timeout=0,negative_timeout=0,sshfs_sync,contain_symlinks"
+      ],
+      "background_log": "sshfs-rw.log"
+    },
+    {
+      "argv": [
+        "ssh",
+        "-F",
+        "<HOME>/.colima/_lima/colima/ssh.config",
+        "-o",
+        "ControlMaster=no",
+        "-o",
+        "ControlPath=none",
+        "-o",
+        "StrictHostKeyChecking=yes",
+        "-o",
+        "NoHostAuthenticationForLocalhost=no",
+        "-o",
+        "UserKnownHostsFile=/private/tmp/itmo-mount-assotfds/vm_known_hosts",
+        "lima-colima",
+        "mountpoint -q /tmp/itmo-mount-assotfds/mounted"
+      ],
+      "returncode": 32,
+      "stdout": "",
+      "stderr": "",
+      "seconds": 0.0842
+    },
+    {
+      "argv": [
+        "ssh",
+        "-F",
+        "<HOME>/.colima/_lima/colima/ssh.config",
+        "-o",
+        "ControlMaster=no",
+        "-o",
+        "ControlPath=none",
+        "-o",
+        "StrictHostKeyChecking=yes",
+        "-o",
+        "NoHostAuthenticationForLocalhost=no",
+        "-o",
+        "UserKnownHostsFile=/private/tmp/itmo-mount-assotfds/vm_known_hosts",
+        "lima-colima",
+        "mountpoint -q /tmp/itmo-mount-assotfds/mounted"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "",
+      "seconds": 0.0639
+    },
+    {
+      "argv": [
+        "ssh",
+        "-F",
+        "<HOME>/.colima/_lima/colima/ssh.config",
+        "-o",
+        "ControlMaster=no",
+        "-o",
+        "ControlPath=none",
+        "-o",
+        "StrictHostKeyChecking=yes",
+        "-o",
+        "NoHostAuthenticationForLocalhost=no",
+        "-o",
+        "UserKnownHostsFile=/private/tmp/itmo-mount-assotfds/vm_known_hosts",
+        "lima-colima",
+        "findmnt -J -T /tmp/itmo-mount-assotfds/mounted"
+      ],
+      "returncode": 0,
+      "stdout": "{\n   \"filesystems\": [\n      {\n         \"target\": \"/tmp/itmo-mount-assotfds/mounted\",\n         \"source\": \"fixture@127.0.0.1:/\",\n         \"fstype\": \"fuse.sshfs\",\n         \"options\": \"rw,nosuid,nodev,relatime,user_id=501,group_id=1000,default_permissions\"\n      }\n   ]\n}\n",
+      "stderr": "",
+      "seconds": 0.0525
+    },
+    {
+      "argv": [
+        "ssh",
+        "-F",
+        "<HOME>/.colima/_lima/colima/ssh.config",
+        "-o",
+        "ControlMaster=no",
+        "-o",
+        "ControlPath=none",
+        "-o",
+        "StrictHostKeyChecking=yes",
+        "-o",
+        "NoHostAuthenticationForLocalhost=no",
+        "-o",
+        "UserKnownHostsFile=/private/tmp/itmo-mount-assotfds/vm_known_hosts",
+        "lima-colima",
+        "python3 -c 'from pathlib import Path; p=Path('\"'\"'/tmp/itmo-mount-assotfds/mounted'\"'\"'); assert (p/'\"'\"'from_mac.txt'\"'\"').read_text()=='\"'\"'mac-one\\n'\"'\"'; (p/'\"'\"'from_linux.txt'\"'\"').write_text('\"'\"'linux-one\\n'\"'\"'); (p/'\"'\"'from_mac.txt'\"'\"').write_text('\"'\"'linux-update\\n'\"'\"')'"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "",
+      "seconds": 0.0798
+    },
+    {
+      "argv": [
+        "ssh",
+        "-F",
+        "<HOME>/.colima/_lima/colima/ssh.config",
+        "-o",
+        "ControlMaster=no",
+        "-o",
+        "ControlPath=none",
+        "-o",
+        "StrictHostKeyChecking=yes",
+        "-o",
+        "NoHostAuthenticationForLocalhost=no",
+        "-o",
+        "UserKnownHostsFile=/private/tmp/itmo-mount-assotfds/vm_known_hosts",
+        "lima-colima",
+        "python3 -c 'from pathlib import Path; p=Path('\"'\"'/tmp/itmo-mount-assotfds/mounted'\"'\"'); assert (p/'\"'\"'from_linux.txt'\"'\"').read_text()=='\"'\"'mac-update\\n'\"'\"'; (p/'\"'\"'from_linux.txt'\"'\"').chmod(0o600); assert (p/'\"'\"'internal-link'\"'\"').read_text()=='\"'\"'linux-update\\n'\"'\"''"
+      ],
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"/usr/lib/python3.12/pathlib.py\", line 1029, in read_text\n    with self.open(mode='r', encoding=encoding, errors=errors) as f:\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.12/pathlib.py\", line 1015, in open\n    return io.open(self, mode, buffering, encoding, errors, newline)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: '/tmp/itmo-mount-assotfds/mounted/internal-link'\n",
+      "seconds": 0.0714
+    },
+    {
+      "argv": [
+        "ssh",
+        "-F",
+        "<HOME>/.colima/_lima/colima/ssh.config",
+        "-o",
+        "ControlMaster=no",
+        "-o",
+        "ControlPath=none",
+        "-o",
+        "StrictHostKeyChecking=yes",
+        "-o",
+        "NoHostAuthenticationForLocalhost=no",
+        "-o",
+        "UserKnownHostsFile=/private/tmp/itmo-mount-assotfds/vm_known_hosts",
+        "lima-colima",
+        "fusermount3 -u /tmp/itmo-mount-assotfds/mounted"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "",
+      "seconds": 0.0558
+    },
+    {
+      "argv": [
+        "ssh",
+        "-F",
+        "<HOME>/.colima/_lima/colima/ssh.config",
+        "-o",
+        "ControlMaster=no",
+        "-o",
+        "ControlPath=none",
+        "-o",
+        "StrictHostKeyChecking=yes",
+        "-o",
+        "NoHostAuthenticationForLocalhost=no",
+        "-o",
+        "UserKnownHostsFile=/private/tmp/itmo-mount-assotfds/vm_known_hosts",
+        "lima-colima",
+        "mountpoint -q /tmp/itmo-mount-assotfds/mounted"
+      ],
+      "returncode": 32,
+      "stdout": "",
+      "stderr": "",
+      "seconds": 0.0564
+    },
+    {
+      "argv": [
+        "ssh",
+        "-F",
+        "<HOME>/.colima/_lima/colima/ssh.config",
+        "-o",
+        "ControlMaster=no",
+        "-o",
+        "ControlPath=none",
+        "-o",
+        "StrictHostKeyChecking=yes",
+        "-o",
+        "NoHostAuthenticationForLocalhost=no",
+        "-o",
+        "UserKnownHostsFile=/private/tmp/itmo-mount-assotfds/vm_known_hosts",
+        "lima-colima",
+        "rm -rf /tmp/itmo-mount-assotfds"
+      ],
+      "returncode": 0,
+      "stdout": "",
+      "stderr": "",
+      "seconds": 0.056
+    }
+  ],
+  "limitations": [
+    "Controlled fixture, not race-safe against a concurrent local attacker",
+    "Explicit remount after interruption; no transparent retry of writes",
+    "No product sandbox integration, concurrent edit or durability guarantee"
+  ],
+  "versions": {
+    "sshfs": "fusermount3 version: 3.14.0\nSSHFS version 3.7.6\nFUSE library version 3.14.0\nusing FUSE kernel interface version 7.31\n",
+    "linux": "Linux colima 6.8.0-117-generic #117-Ubuntu SMP PREEMPT_DYNAMIC Thu May  7 17:26:37 UTC 2026 aarch64 aarch64 aarch64 GNU/Linux\n",
+    "asyncssh": "2.24.1"
+  },
+  "error": "RuntimeError('{\"argv\": [\"ssh\", \"-F\", \"<HOME>/.colima/_lima/colima/ssh.config\", \"-o\", \"ControlMaster=no\", \"-o\", \"ControlPath=none\", \"-o\", \"StrictHostKeyChecking=yes\", \"-o\", \"NoHostAuthenticationForLocalhost=no\", \"-o\", \"UserKnownHostsFile=/private/tmp/itmo-mount-assotfds/vm_known_hosts\", \"lima-colima\", \"python3 -c \\'from pathlib import Path; p=Path(\\'\\\\\"\\'\\\\\"\\'/tmp/itmo-mount-assotfds/mounted\\'\\\\\"\\'\\\\\"\\'); assert (p/\\'\\\\\"\\'\\\\\"\\'from_linux.txt\\'\\\\\"\\'\\\\\"\\').read_text()==\\'\\\\\"\\'\\\\\"\\'mac-update\\\\\\\\n\\'\\\\\"\\'\\\\\"\\'; (p/\\'\\\\\"\\'\\\\\"\\'from_linux.txt\\'\\\\\"\\'\\\\\"\\').chmod(0o600); assert (p/\\'\\\\\"\\'\\\\\"\\'internal-link\\'\\\\\"\\'\\\\\"\\').read_text()==\\'\\\\\"\\'\\\\\"\\'linux-update\\\\\\\\n\\'\\\\\"\\'\\\\\"\\'\\'\"], \"returncode\": 1, \"stdout\": \"\", \"stderr\": \"Traceback (most recent call last):\\\\n  File \\\\\"<string>\\\\\", line 1, in <module>\\\\n  File \\\\\"/usr/lib/python3.12/pathlib.py\\\\\", line 1029, in read_text\\\\n    with self.open(mode=\\'r\\', encoding=encoding, errors=errors) as f:\\\\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\\\n  File \\\\\"/usr/lib/python3.12/pathlib.py\\\\\", line 1015, in open\\\\n    return io.open(self, mode, buffering, encoding, errors, newline)\\\\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\\\nFileNotFoundError: [Errno 2] No such file or directory: \\'/tmp/itmo-mount-assotfds/mounted/internal-link\\'\\\\n\", \"seconds\": 0.0714}')",
+  "cleanup_unmounted": true,
+  "cleanup_local_removed": true,
+  "passed": false,
+  "finished_utc": "2026-11-06T10:54:20.291004+00:00"
+}
